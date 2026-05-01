@@ -8,11 +8,7 @@
 <meta name="keywords" content="veterinary clinic software, vet clinic pricing, AVImark integration, veterinary revenue dashboard, clinic pricing optimization, veterinary expense monitoring, Cornerstone veterinary, ezyVet integration"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://vetinc.ca/"/>
-
-<!-- Force HTTPS redirect -->
 <script>if(location.protocol==='http:'&&location.hostname!=='localhost')location.replace('https://'+location.hostname+location.pathname+location.search+location.hash)</script>
-
-<!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Vet INC — Smart Revenue Tools for Veterinary Clinics"/>
 <meta property="og:description" content="Recover lost revenue with automated pricing campaigns, expense monitoring, and daily ops analysis. Dashboard live in under 60 minutes."/>
@@ -21,8 +17,6 @@
 <meta property="og:image" content="https://vetinc.ca/assets/og-image.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Vet INC — Smart Revenue Tools for Veterinary Clinics"/>
 <meta name="twitter:description" content="Recover lost revenue with automated pricing campaigns and daily ops analysis."/>
@@ -34,7 +28,7 @@
   --navy:#1e3a5f;--muted:#64748b;--bg:#f0f6ff;--white:#fff;
   --purple:#7c3aed;--green:#16a34a;
 }
-body{background:var(--bg);color:var(--navy);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh}
+body{background:var(--bg);color:var(--navy);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
 
 /* NAV */
 nav{background:var(--white);border-bottom:1px solid var(--blue-border);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 12px rgba(37,99,235,.06)}
@@ -48,81 +42,79 @@ nav{background:var(--white);border-bottom:1px solid var(--blue-border);padding:0
 .nav-cta:hover{background:#1d4ed8!important}
 
 /* HERO */
-.hero{text-align:center;padding:88px 20px 72px;background:linear-gradient(180deg,var(--white) 0%,var(--bg) 100%);border-bottom:1px solid var(--blue-border);position:relative;overflow:hidden}
+.hero{text-align:center;padding:80px 20px 64px;background:linear-gradient(180deg,var(--white) 0%,var(--bg) 100%);border-bottom:1px solid var(--blue-border);position:relative;overflow:hidden}
 .hero-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(37,99,235,.07) 0%,transparent 70%);pointer-events:none}
 .hero-badge{display:inline-block;background:var(--blue-dim);color:var(--blue);font-size:.72rem;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:22px;border:1px solid var(--blue-border);letter-spacing:.05em;text-transform:uppercase}
-.hero h1{font-size:3rem;font-weight:900;line-height:1.1;color:var(--navy);margin-bottom:18px}
+.hero h1{font-size:2.8rem;font-weight:900;line-height:1.12;color:var(--navy);margin-bottom:18px}
 .hero h1 span{background:linear-gradient(135deg,var(--blue),var(--blue-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:540px;margin:0 auto}
-
-/* TWO PATHS */
-.paths{max-width:1100px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
-@media(max-width:900px){.paths{grid-template-columns:1fr;padding:40px 20px}}
-
-.path-card{background:var(--white);border:1px solid var(--blue-border);border-radius:20px;padding:40px 36px;display:flex;flex-direction:column;transition:all .25s;cursor:pointer;text-decoration:none;color:inherit;position:relative;overflow:hidden}
-.path-card:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(37,99,235,.12);transform:translateY(-3px)}
-.path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-light));opacity:0;transition:opacity .25s}
-.path-card:hover::before{opacity:1}
-.path-card.purple:hover{border-color:var(--purple);box-shadow:0 8px 32px rgba(124,58,237,.12)}
-.path-card.purple::before{background:linear-gradient(90deg,var(--purple),#a78bfa)}
-
-.path-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.path-icon.blue{background:linear-gradient(135deg,var(--blue),var(--blue-light));box-shadow:0 4px 14px rgba(37,99,235,.25)}
-.path-icon.purple{background:linear-gradient(135deg,var(--purple),#a78bfa);box-shadow:0 4px 14px rgba(124,58,237,.25)}
-
-.path-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:8px}
-.path-card.purple .path-label{color:var(--purple)}
-.path-title{font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:12px}
-.path-desc{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:24px;flex:1}
-
-.path-features{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
-.path-feature{display:flex;align-items:flex-start;gap:10px;font-size:.83rem;color:var(--muted)}
-.path-feature-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:6px}
-.path-card.purple .path-feature-dot{background:var(--purple)}
-
-.path-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;font-size:.88rem;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;transition:all .2s;align-self:flex-start;box-shadow:0 3px 10px rgba(37,99,235,.2)}
-.path-card.purple .path-btn{background:linear-gradient(135deg,var(--purple),#a78bfa);box-shadow:0 3px 10px rgba(124,58,237,.2)}
-.path-btn-arrow{transition:transform .2s}
-.path-card:hover .path-btn-arrow{transform:translateX(4px)}
-.demo-shot{width:100%;max-width:720px;height:auto;object-fit:cover;border-radius:16px;border:1px solid var(--blue-border);box-shadow:0 10px 28px rgba(15,23,42,.10);margin:18px auto 0;display:block;background:#fff;padding:8px}
-.demo-link{text-decoration:none;color:#fff}
-.demo-section{padding:48px 0 0}
-.demo-card{max-width:1100px;margin:0 auto;padding:0 24px;text-align:center}
-.integration-section{max-width:1100px;margin:0 auto;padding:56px 24px;text-align:center}
-.badge-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:18px 0}
+.hero p{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:560px;margin:0 auto}
+.badge-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
 .badge-pill{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);border-radius:999px;padding:6px 14px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.badge-pill.purple{color:var(--purple);border-color:#e9d5ff;background:#f5f3ff}
-.badge-pill.green{color:var(--green);border-color:#bbf7d0;background:#f0fdf4}
-.what-section{background:var(--white);border:1px solid var(--blue-border);border-radius:20px;padding:28px 24px;box-shadow:0 12px 30px rgba(37,99,235,.08)}
-.what-header{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:20px}
-.pillar-card{background:#ffffff;border:1px solid var(--blue-border);border-radius:16px;padding:18px;box-shadow:0 8px 20px rgba(37,99,235,.06)}
-.pillar-kicker{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.pillar-title{font-size:1rem;font-weight:800;color:var(--navy);margin-bottom:6px}
-.pillar-desc{font-size:.86rem;color:var(--muted);line-height:1.6}
-.pillar-points{margin-top:10px;display:grid;gap:6px}
-.pillar-point{display:flex;gap:8px;align-items:flex-start;font-size:.82rem;color:var(--muted)}
-.pillar-dot{width:6px;height:6px;border-radius:999px;background:var(--blue);margin-top:6px;flex-shrink:0}
-.integration-card{background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);border:1px solid var(--blue-border);border-radius:18px;padding:24px;box-shadow:0 12px 30px rgba(37,99,235,.10);text-align:left}
-.integration-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
-.integration-step{background:var(--white);border:1px solid var(--blue-border);border-radius:12px;padding:12px;font-size:.82rem;color:var(--muted)}
-body{overflow-x:hidden}
 
-/* DIFFERENCE STRIP */
-.diff-strip{background:var(--white);border-top:1px solid var(--blue-border);border-bottom:1px solid var(--blue-border);padding:48px 24px;text-align:center}
-.diff-inner{max-width:700px;margin:0 auto}
-.diff-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
-.diff-title{font-size:1.4rem;font-weight:900;color:var(--navy);margin-bottom:16px}
-.diff-text{font-size:.9rem;color:var(--muted);line-height:1.75}
-.diff-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;margin-top:32px;text-align:left}
-@media(max-width:560px){.diff-vs{grid-template-columns:1fr;text-align:center}}
-.diff-side{background:var(--bg);border:1px solid var(--blue-border);border-radius:12px;padding:20px}
-.diff-side-title{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:6px}
-.diff-side-sub{font-size:.78rem;color:var(--muted);line-height:1.6}
-.diff-vs-badge{background:var(--blue-dim);color:var(--blue);font-size:.75rem;font-weight:800;padding:6px 12px;border-radius:8px;border:1px solid var(--blue-border);white-space:nowrap;text-align:center}
+/* SECTIONS */
+.section{max-width:1100px;margin:0 auto;padding:56px 24px}
+.section-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:8px;text-align:center}
+.section-title{font-size:1.5rem;font-weight:900;color:var(--navy);margin-bottom:10px;text-align:center}
+.section-desc{font-size:.92rem;color:var(--muted);line-height:1.7;text-align:center;max-width:640px;margin:0 auto 32px}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:56px}
+.stat-card{text-align:center;padding:24px 16px;background:var(--white);border-radius:14px;border:1px solid var(--blue-border)}
+.stat-val{font-size:32px;font-weight:900;color:var(--blue)}
+.stat-val.green{color:var(--green)}
+.stat-val.purple{color:var(--purple)}
+.stat-val.amber{color:#d97706}
+.stat-lbl{font-size:.78rem;color:var(--muted);margin-top:4px;line-height:1.4}
+
+/* CARDS GRID */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:var(--white);border:1px solid var(--blue-border);border-radius:16px;padding:28px;box-shadow:0 4px 16px rgba(37,99,235,.04)}
+.card-num{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.card-title{font-size:1.05rem;font-weight:800;color:var(--navy);margin-bottom:8px}
+.card-desc{font-size:.88rem;color:var(--muted);line-height:1.65}
+.card-points{margin-top:12px;display:grid;gap:6px}
+.card-point{display:flex;gap:8px;align-items:flex-start;font-size:.84rem;color:var(--muted)}
+.card-dot{width:5px;height:5px;border-radius:999px;background:var(--blue);margin-top:7px;flex-shrink:0}
+
+/* HIGHLIGHT CARD */
+.highlight-card{background:var(--white);border:1px solid var(--blue-border);border-radius:20px;padding:36px;box-shadow:0 8px 28px rgba(37,99,235,.08)}
+.highlight-card.accent{border-left:4px solid var(--blue)}
+.highlight-card.accent-purple{border-left:4px solid var(--purple)}
+.highlight-card.accent-green{border-left:4px solid var(--green)}
+
+/* ALERT ROW */
+.alert{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg);border-radius:10px;border:1px solid var(--blue-border)}
+.alert-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.alert-icon.blue{background:var(--blue-dim);color:var(--blue)}
+.alert-icon.green{background:#f0fdf4;color:var(--green)}
+.alert-icon.amber{background:#fef3c7;color:#d97706}
+.alert-title{font-size:.86rem;font-weight:700;color:var(--navy)}
+.alert-text{font-size:.8rem;color:var(--muted);margin-top:2px;line-height:1.5}
+.alert-text strong{color:var(--green)}
+
+/* SECURITY GRID */
+.secure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.secure-item{padding:20px 16px;background:var(--white);border:1px solid var(--blue-border);border-radius:12px;text-align:center}
+.secure-title{font-size:.84rem;font-weight:700;color:var(--navy);margin-top:8px}
+.secure-desc{font-size:.75rem;color:var(--muted);margin-top:4px;line-height:1.4}
+
+/* INTEGRATION */
+.integration-card{background:var(--white);border:1px solid var(--blue-border);border-radius:18px;padding:36px;box-shadow:0 8px 24px rgba(37,99,235,.08)}
+.integration-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:20px 0}
+.integration-step{background:var(--bg);border:1px solid var(--blue-border);border-radius:10px;padding:14px 16px;font-size:.84rem;color:var(--muted);display:flex;align-items:flex-start;gap:10px}
+.step-num{width:22px;height:22px;border-radius:6px;background:var(--blue);color:#fff;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* DEMO */
+.demo-section{padding:48px 0 0;text-align:center}
+.demo-shot{width:100%;max-width:720px;height:auto;object-fit:cover;border-radius:14px;border:1px solid var(--blue-border);box-shadow:0 10px 28px rgba(15,23,42,.10);margin:20px auto 0;display:block;background:#fff;padding:8px}
+
+/* CTA */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;font-size:.9rem;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;text-decoration:none;transition:all .2s;box-shadow:0 3px 10px rgba(37,99,235,.2);border:none;cursor:pointer;font-family:inherit}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,99,235,.3)}
+.btn:disabled{background:var(--blue-border);color:#94a3b8;cursor:not-allowed;transform:none;box-shadow:none}
 
 /* CONTACT */
-.contact-section{max-width:600px;margin:0 auto;padding:64px 24px;text-align:center}
+.contact-section{max-width:580px;margin:0 auto;padding:64px 24px;text-align:center}
 .contact-section h2{font-size:1.5rem;font-weight:900;color:var(--navy);margin-bottom:10px}
 .contact-section p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:28px}
 .contact-form{background:var(--white);border:1px solid var(--blue-border);border-radius:16px;padding:32px;text-align:left;box-shadow:0 4px 24px rgba(37,99,235,.06)}
@@ -134,9 +126,6 @@ body{overflow-x:hidden}
 .form-input:focus{border-color:var(--blue);background:var(--white);box-shadow:0 0 0 3px rgba(37,99,235,.08)}
 textarea.form-input{min-height:100px;resize:vertical}
 select.form-input{cursor:pointer}
-.btn-submit{width:100%;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;border:none;padding:13px;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
-.btn-submit:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,.3)}
-.btn-submit:disabled{background:var(--blue-border);color:#94a3b8;cursor:not-allowed;transform:none;box-shadow:none}
 .form-status{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:.83rem;text-align:center;display:none}
 .form-status.success{display:block;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.2);color:var(--green)}
 .form-status.error{display:block;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#ef4444}
@@ -150,6 +139,17 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:32px 40px;displ
 .footer-links a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s}
 .footer-links a:hover{color:#fff}
 .footer-copy{font-size:.75rem;color:rgba(255,255,255,.3);width:100%}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--blue-border);margin:0}
+
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+  .card-grid{grid-template-columns:1fr}
+  nav{padding:0 20px}
+  .nav-links{gap:2px}
+  .nav-link{font-size:.8rem;padding:6px 10px}
+}
 </style>
 </head>
 <body>
@@ -163,8 +163,8 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:32px 40px;displ
   </a>
   <div class="nav-links">
     <a class="nav-link" href="pms.html">PMS Integration</a>
-    <a class="nav-link" href="https://jack108510.github.io/vet-inc-demo-v1.3/" target="_blank">Open Demo</a>
-    <a class="nav-link nav-cta" href="#contact">Get Integrated</a>
+    <a class="nav-link" href="https://jack108510.github.io/vet-inc-demo-v1.3/" target="_blank">Demo</a>
+    <a class="nav-link nav-cta" href="#contact">Get Started</a>
   </div>
 </nav>
 
@@ -173,248 +173,244 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:32px 40px;displ
   <div class="hero-glow"></div>
   <div class="hero-badge">Built for Veterinary Clinics</div>
   <h1>Smarter Revenue Tools for<br/><span>Modern Veterinary Clinics</span></h1>
-  <p>Vet INC helps your clinic recover lost revenue through automated pricing campaigns, expense monitoring, and daily operations analysis — compatible with AVImark, Cornerstone, and ezyVet.</p>
-  <div class="badge-row" style="margin-top:28px">
-    <span class="badge-pill">Compatible with AVImark</span>
-    <span class="badge-pill">Compatible with Cornerstone</span>
-    <span class="badge-pill">Compatible with ezyVet</span>
+  <p>Recover lost revenue through automated pricing campaigns, expense monitoring, and daily operations analysis. Compatible with AVImark, Cornerstone, and ezyVet.</p>
+  <div class="badge-row">
+    <span class="badge-pill">AVImark</span>
+    <span class="badge-pill">Cornerstone</span>
+    <span class="badge-pill">ezyVet</span>
   </div>
 </header>
 
+<!-- STATS -->
+<div class="section" style="padding-bottom:0">
+  <div class="stats-row" style="max-width:760px;margin:0 auto">
+    <div class="stat-card">
+      <div class="stat-val">3%</div>
+      <div class="stat-lbl">Average annual price drift per service code</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val green">$0.51</div>
+      <div class="stat-lbl">Revenue lost per non-.99 transaction</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val purple">60 min</div>
+      <div class="stat-lbl">From install to live dashboard</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val amber">24/7</div>
+      <div class="stat-lbl">Automated monitoring</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
 <!-- WHAT WE DO -->
-<section class="integration-section" aria-label="What we do">
-  <div class="what-section">
-    <div class="what-header">
-      <div class="path-label">What We Do</div>
-      <h2 class="path-title">We turn clinic data into profit, clarity, and control</h2>
-      <div class="path-desc">Three pillars power the platform today — with more coming next.</div>
-    </div>
-
-    <!-- Trust Stats -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:24px auto;max-width:700px">
-      <div style="text-align:center;padding:20px 16px;background:var(--blue-dim);border-radius:14px;border:1px solid var(--blue-border)">
-        <div style="font-size:32px;font-weight:900;color:var(--blue)">3%</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Average annual price drift per service code</div>
-      </div>
-      <div style="text-align:center;padding:20px 16px;background:#f0fdf4;border-radius:14px;border:1px solid #bbf7d0">
-        <div style="font-size:32px;font-weight:900;color:var(--green)">$0.51</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Revenue lost per non-.99 price transaction</div>
-      </div>
-      <div style="text-align:center;padding:20px 16px;background:#f5f3ff;border-radius:14px;border:1px solid #e9d5ff">
-        <div style="font-size:32px;font-weight:900;color:var(--purple)">60min</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">From install to live dashboard</div>
-      </div>
-      <div style="text-align:center;padding:20px 16px;background:#fef3c7;border-radius:14px;border:1px solid #fde68a">
-        <div style="font-size:32px;font-weight:900;color:#d97706">24/7</div>
-        <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Automated monitoring — never sleeps</div>
+<div class="section">
+  <div class="section-label">What We Do</div>
+  <div class="section-title">Turn clinic data into profit, clarity, and control</div>
+  <div class="section-desc">Three pillars power the platform — with more on the way.</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-num">Pillar 01</div>
+      <div class="card-title">Pricing Intelligence</div>
+      <div class="card-desc">Small, surgical fee adjustments that compound into meaningful revenue over time.</div>
+      <div class="card-points">
+        <div class="card-point"><span class="card-dot"></span>Inflation adjustment + .99 recovery</div>
+        <div class="card-point"><span class="card-dot"></span>Micro-margin campaigns</div>
       </div>
     </div>
-
-    <div class="pillars">
-      <div class="pillar-card">
-        <div class="pillar-kicker">Pillar 01</div>
-        <div class="pillar-title">Pricing Intelligence</div>
-        <div class="pillar-desc">Small, surgical fee adjustments that compound into meaningful revenue over time.</div>
-        <div class="pillar-points">
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Inflation adjustment + .99 recovery</span></div>
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Micro‑margin campaigns</span></div>
-        </div>
+    <div class="card">
+      <div class="card-num">Pillar 02</div>
+      <div class="card-title">Daily Ops Analyzer</div>
+      <div class="card-desc">Flags over-staffing, policy drift, and abnormal charges with daily variance checks.</div>
+      <div class="card-points">
+        <div class="card-point"><span class="card-dot"></span>Revenue per hour alerts</div>
+        <div class="card-point"><span class="card-dot"></span>Policy drift detection</div>
       </div>
-      <div class="pillar-card">
-        <div class="pillar-kicker">Pillar 02</div>
-        <div class="pillar-title">Daily Ops Analyzer</div>
-        <div class="pillar-desc">Flags over‑staffing, policy drift, and abnormal charges with daily variance checks.</div>
-        <div class="pillar-points">
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Revenue per hour alerts</span></div>
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Policy drift detection</span></div>
-        </div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-kicker">Pillar 03</div>
-        <div class="pillar-title">Future Expansion</div>
-        <div class="pillar-desc">Smart inventory management, social/email marketing, in‑clinic efficiency tools, and more.</div>
-        <div class="pillar-points">
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Inventory intelligence</span></div>
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Marketing + efficiency modules</span></div>
-        </div>
+    </div>
+    <div class="card">
+      <div class="card-num">Pillar 03</div>
+      <div class="card-title">Future Expansion</div>
+      <div class="card-desc">Smart inventory management, social and email marketing, in-clinic efficiency tools.</div>
+      <div class="card-points">
+        <div class="card-point"><span class="card-dot"></span>Inventory intelligence</div>
+        <div class="card-point"><span class="card-dot"></span>Marketing + efficiency modules</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- HOW CAMPAIGNS WORK -->
-<div class="integration-section" style="padding-top:0">
-  <div class="what-section">
-    <div class="what-header">
-      <div class="path-label">How It Works</div>
-      <h2 class="path-title">Campaigns That Find Money You're Leaving on the Table</h2>
-      <div class="path-desc">Vet INC runs continuous campaigns on your data — each one targets a specific type of revenue loss and shows you exactly what to fix, what to charge, and how much you'll recover.</div>
+<hr class="divider"/>
+
+<!-- CAMPAIGNS -->
+<div class="section">
+  <div class="section-label">How It Works</div>
+  <div class="section-title">Campaigns That Find Money You're Leaving on the Table</div>
+  <div class="section-desc">Vet INC runs continuous campaigns on your data. Each targets a specific type of revenue loss and shows exactly what to fix, what to charge, and how much you'll recover.</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-num">Campaign 1</div>
+      <div class="card-title">Inflation Adjuster</div>
+      <div class="card-desc">Compounds CPI from each item's last price change. Shows which services have fallen behind inflation and what they should cost now — item by item, dollar by dollar.</div>
+      <div class="card-points">
+        <div class="card-point"><span class="card-dot"></span>Real date tracking per item</div>
+        <div class="card-point"><span class="card-dot"></span>Annual uplift calculated per SKU</div>
+      </div>
     </div>
-    <div class="pillars">
-      <div class="pillar-card">
-        <div class="pillar-kicker">Campaign 1</div>
-        <div class="pillar-title">Inflation Adjuster</div>
-        <div class="pillar-desc">Compounds CPI from each item's last price change to today. Shows exactly which services have fallen behind inflation and what they should cost now — item by item, dollar by dollar.</div>
-        <div class="pillar-points">
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Real date tracking per item</span></div>
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Annual uplift calculated per SKU</span></div>
-        </div>
+    <div class="card">
+      <div class="card-num">Campaign 2</div>
+      <div class="card-title">.99 Pricing Recovery</div>
+      <div class="card-desc">Rounds every non-.99 price up. Uses actual transaction volume to show exactly how much revenue was left behind — and what you'd gain going forward.</div>
+      <div class="card-points">
+        <div class="card-point"><span class="card-dot"></span>Based on real transaction history</div>
+        <div class="card-point"><span class="card-dot"></span>Zero impact on patient perception</div>
       </div>
-      <div class="pillar-card">
-        <div class="pillar-kicker">Campaign 2</div>
-        <div class="pillar-title">.99 Pricing Recovery</div>
-        <div class="pillar-desc">Rounds every non-.99 price up to the next .99. Uses actual transaction volume to show exactly how much revenue was left behind last year — and what you'd gain going forward.</div>
-        <div class="pillar-points">
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Based on real transaction history</span></div>
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Zero impact on patient perception</span></div>
-        </div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-kicker">Campaign 3</div>
-        <div class="pillar-title">Inventory Micro Margin</div>
-        <div class="pillar-desc">When a supplier raises costs and you update the selling price, the system adds an extra 5% margin bump. Tracks units sold since the change and shows what that extra margin earns annually.</div>
-        <div class="pillar-points">
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Auto-detects supplier cost changes</span></div>
-          <div class="pillar-point"><span class="pillar-dot"></span><span>Margin stacked on top of pass-through</span></div>
-        </div>
+    </div>
+    <div class="card">
+      <div class="card-num">Campaign 3</div>
+      <div class="card-title">Inventory Micro Margin</div>
+      <div class="card-desc">When a supplier raises costs and you update the selling price, the system adds an extra 5% margin bump. Tracks units sold and shows what that earns annually.</div>
+      <div class="card-points">
+        <div class="card-point"><span class="card-dot"></span>Auto-detects supplier cost changes</div>
+        <div class="card-point"><span class="card-dot"></span>Margin stacked on top of pass-through</div>
       </div>
     </div>
   </div>
 </div>
+
+<hr class="divider"/>
 
 <!-- SHOPPABLES -->
-<div class="integration-section" style="padding-top:0">
-  <div class="what-section">
-    <div class="what-header">
-      <div class="path-label" style="color:var(--green)">Revenue Growth</div>
-      <h2 class="path-title">Shoppables — Exam Drop Initiative</h2>
-      <div class="path-desc">A strategic pricing move: lower exam fees to attract new patients, then recover the gap by bumping the top pairing items (vaccines, diagnostics, treatments) that always follow. The system calculates the exact trade-off so you never lose money — you gain volume.</div>
+<div class="section">
+  <div class="section-label" style="color:var(--green)">Revenue Growth</div>
+  <div class="section-title">Exam Drop Initiative</div>
+  <div class="section-desc">Lower exam fees to attract new patients, then recover the gap by bumping the top pairing items that always follow. The system calculates the exact trade-off so you never lose money — you gain volume.</div>
+  <div class="card-grid" style="grid-template-columns:1fr 1fr">
+    <div class="card">
+      <div class="card-num">The Drop</div>
+      <div class="card-title">Lower Exam Prices</div>
+      <div class="card-desc">Reduce exam fees to remove the barrier for new pet owners. The system shows which exams to drop and by how much, based on your local market and volume data.</div>
     </div>
-    <div class="pillars" style="grid-template-columns:1fr 1fr">
-      <div class="pillar-card">
-        <div class="pillar-kicker">The Drop</div>
-        <div class="pillar-title">Lower Exam Prices</div>
-        <div class="pillar-desc">Reduce exam fees to remove the barrier for new pet owners. The system shows which exams to drop and by how much, based on your local market and volume data.</div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-kicker">The Bump</div>
-        <div class="pillar-title">Pairing Price Recovery</div>
-        <div class="pillar-desc">Every exam pairs with 2–3 services (vaccines, bloodwork, etc.). Small bumps on these high-attachment items recover the exam drop and then some — net positive from day one.</div>
-      </div>
+    <div class="card">
+      <div class="card-num">The Bump</div>
+      <div class="card-title">Pairing Price Recovery</div>
+      <div class="card-desc">Every exam pairs with 2–3 services (vaccines, bloodwork, etc.). Small bumps on these high-attachment items recover the exam drop and then some — net positive from day one.</div>
     </div>
   </div>
 </div>
+
+<hr class="divider"/>
 
 <!-- THE BRAIN -->
-<div class="integration-section" style="padding-top:0">
-  <div class="what-section" style="background:linear-gradient(180deg,#f8fbff,#fff);border-color:#bfdbfe">
-    <div class="what-header">
-      <div class="path-label" style="color:var(--purple)">Always On</div>
-      <h2 class="path-title">The Vet INC Brain</h2>
-      <div class="path-desc">A monitoring system that never sleeps. It watches your prices, expenses, and transaction patterns 24/7 — and surfaces recommendations before you even know there's a problem.</div>
+<div class="section">
+  <div class="section-label" style="color:var(--purple)">Always On</div>
+  <div class="section-title">The Vet INC Brain</div>
+  <div class="section-desc">A monitoring system that never sleeps. It watches your prices, expenses, and transaction patterns 24/7 — and surfaces recommendations before you even know there's a problem.</div>
+  <div class="card-grid">
+    <div class="highlight-card accent">
+      <div class="card-num">Monitor</div>
+      <div class="card-title">Continuous Price Scanning</div>
+      <div class="card-desc">Every charge code, every cost change, every fee schedule — tracked against inflation benchmarks, competitor averages, and your own historical patterns.</div>
     </div>
-    <div class="pillars">
-      <div class="pillar-card" style="border-left:4px solid var(--blue)">
-        <div class="pillar-kicker">Monitor</div>
-        <div class="pillar-title">Continuous Price Scanning</div>
-        <div class="pillar-desc">Every charge code, every cost change, every fee schedule — tracked and compared against inflation benchmarks, competitor averages, and your own historical patterns. Nothing drifts without triggering an alert.</div>
-      </div>
-      <div class="pillar-card" style="border-left:4px solid var(--purple)">
-        <div class="pillar-kicker">Analyze</div>
-        <div class="pillar-title">Expense Pattern Recognition</div>
-        <div class="pillar-desc">Detects abnormal spending, over-staffing patterns, supply cost creep, and policy drift. Compares current operations against your best-performing periods to flag inefficiency automatically.</div>
-      </div>
-      <div class="pillar-card" style="border-left:4px solid var(--green)">
-        <div class="pillar-kicker">Recommend</div>
-        <div class="pillar-title">Actionable Optimization</div>
-        <div class="pillar-desc">Every recommendation comes with dollar impact. No vague suggestions — just "raise this code by $X to recover $Y/year" or "this expense category is 22% above your 6-month average." One-click to review, one click to act.</div>
-      </div>
+    <div class="highlight-card accent-purple">
+      <div class="card-num">Analyze</div>
+      <div class="card-title">Expense Pattern Recognition</div>
+      <div class="card-desc">Detects abnormal spending, over-staffing, supply cost creep, and policy drift. Compares against your best-performing periods to flag inefficiency automatically.</div>
     </div>
+    <div class="highlight-card accent-green">
+      <div class="card-num">Recommend</div>
+      <div class="card-title">Actionable Optimization</div>
+      <div class="card-desc">Every recommendation comes with dollar impact. "Raise this code by $X to recover $Y/year" or "this expense is 22% above your 6-month average." One click to act.</div>
+    </div>
+  </div>
 
-    <!-- Example Recommendations -->
-    <div style="margin-top:24px;text-align:left">
-      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;text-align:center">Example Brain Alerts</div>
-      <div style="display:grid;gap:10px;max-width:600px;margin:0 auto">
-        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--blue-border)">
-          <div style="font-size:18px;flex-shrink:0">💰</div>
-          <div><div style="font-size:.86rem;font-weight:700;color:var(--navy)">Price Drift Detected: Rabies Vaccine</div><div style="font-size:.8rem;color:var(--muted);margin-top:2px">Last price change was 18 months ago. CPI adjustment suggests +$2.40. Estimated annual recovery: <strong style="color:var(--green)">$864</strong></div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--blue-border)">
-          <div style="font-size:18px;flex-shrink:0">📊</div>
-          <div><div style="font-size:.86rem;font-weight:700;color:var(--navy)">.99 Opportunity: 47 Service Codes</div><div style="font-size:.8rem;color:var(--muted);margin-top:2px">47 codes don't end in .99. Rounding up recovers an average of $0.51 per transaction. Estimated annual gain: <strong style="color:var(--green)">$3,200</strong></div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg);border-radius:12px;border:1px solid var(--blue-border)">
-          <div style="font-size:18px;flex-shrink:0">⚠️</div>
-          <div><div style="font-size:.86rem;font-weight:700;color:var(--navy)">Expense Anomaly: Lab Supplies</div><div style="font-size:.8rem;color:var(--muted);margin-top:2px">Lab supply costs are 28% above your 6-month average. Possible supplier price increase or ordering pattern change.</div></div>
-        </div>
-      </div>
+  <!-- Example Alerts -->
+  <div style="max-width:600px;margin:28px auto 0;display:grid;gap:10px">
+    <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:center;margin-bottom:4px">Example Brain Alerts</div>
+    <div class="alert">
+      <div class="alert-icon blue">$</div>
+      <div><div class="alert-title">Price Drift: Rabies Vaccine</div><div class="alert-text">Last changed 18 months ago. CPI suggests +$2.40. Annual recovery: <strong>$864</strong></div></div>
+    </div>
+    <div class="alert">
+      <div class="alert-icon green">.99</div>
+      <div><div class="alert-title">Pricing Opportunity: 47 Service Codes</div><div class="alert-text">Don't end in .99. Rounding recovers avg $0.51/transaction. Annual gain: <strong>$3,200</strong></div></div>
+    </div>
+    <div class="alert">
+      <div class="alert-icon amber">!</div>
+      <div><div class="alert-title">Expense Anomaly: Lab Supplies</div><div class="alert-text">28% above your 6-month average. Possible supplier increase or ordering pattern change.</div></div>
     </div>
   </div>
 </div>
 
-<!-- SECURITY TRUST -->
-<div class="integration-section" style="padding-top:0">
-  <div style="max-width:700px;margin:0 auto;text-align:center">
-    <div class="path-label" style="color:var(--green)">Secure by Design</div>
-    <h2 class="path-title" style="font-size:1.2rem">Your Data Stays Yours</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px">
-      <div style="padding:16px;background:var(--white);border:1px solid var(--blue-border);border-radius:12px">
-        <div style="font-size:20px;margin-bottom:6px">🔒</div>
-        <div style="font-size:.82rem;font-weight:700;color:var(--navy)">Encrypted</div>
-        <div style="font-size:.75rem;color:var(--muted)">All data encrypted in transit and at rest</div>
-      </div>
-      <div style="padding:16px;background:var(--white);border:1px solid var(--blue-border);border-radius:12px">
-        <div style="font-size:20px;margin-bottom:6px">🗄️</div>
-        <div style="font-size:.82rem;font-weight:700;color:var(--navy)">Private Schema</div>
-        <div style="font-size:.75rem;color:var(--muted)">Each clinic gets its own isolated database</div>
-      </div>
-      <div style="padding:16px;background:var(--white);border:1px solid var(--blue-border);border-radius:12px">
-        <div style="font-size:20px;margin-bottom:6px">🇨🇦</div>
-        <div style="font-size:.82rem;font-weight:700;color:var(--navy)">Canadian Hosted</div>
-        <div style="font-size:.75rem;color:var(--muted)">Data stored on Canadian servers</div>
-      </div>
-      <div style="padding:16px;background:var(--white);border:1px solid var(--blue-border);border-radius:12px">
-        <div style="font-size:20px;margin-bottom:6px">📋</div>
-        <div style="font-size:.82rem;font-weight:700;color:var(--navy)">No Data Sharing</div>
-        <div style="font-size:.75rem;color:var(--muted)">Your clinic data is never sold or shared</div>
-      </div>
+<hr class="divider"/>
+
+<!-- SECURITY -->
+<div class="section" style="text-align:center">
+  <div class="section-label" style="color:var(--green)">Secure by Design</div>
+  <div class="section-title" style="font-size:1.2rem">Your Data Stays Yours</div>
+  <div class="secure-grid" style="max-width:640px;margin:20px auto 0">
+    <div class="secure-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div class="secure-title">Encrypted</div>
+      <div class="secure-desc">All data encrypted in transit and at rest</div>
+    </div>
+    <div class="secure-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      <div class="secure-title">Private Schema</div>
+      <div class="secure-desc">Each clinic gets its own isolated database</div>
+    </div>
+    <div class="secure-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="secure-title">Canadian Hosted</div>
+      <div class="secure-desc">Data stored on Canadian servers</div>
+    </div>
+    <div class="secure-item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <div class="secure-title">No Data Sharing</div>
+      <div class="secure-desc">Clinic data is never sold or shared</div>
     </div>
   </div>
 </div>
 
-<!-- PMS COMPATIBILITY -->
+<hr class="divider"/>
+
+<!-- DEMO -->
 <div class="demo-section">
-  <div class="demo-card">
-    <div class="path-label">Live Demo</div>
-    <h2 class="path-title">Try Vet INC</h2>
-    <div class="path-desc">Explore the full dashboard experience with demo clinic data.</div>
-    <div class="path-btn"><a class="demo-link" href="https://jack108510.github.io/vet-inc-demo-v1.3/" target="_blank">Open Demo →</a></div>
-  </div>
+  <div class="section-label">Live Demo</div>
+  <div class="section-title">Try Vet INC</div>
+  <div class="section-desc">Explore the full dashboard experience with demo clinic data.</div>
+  <a class="btn" href="https://jack108510.github.io/vet-inc-demo-v1.3/" target="_blank">Open Demo &rarr;</a>
   <img class="demo-shot" src="assets/demo-screenshot.jpg" alt="Vet INC demo dashboard" />
 </div>
 
+<hr class="divider"/>
+
 <!-- INTEGRATION -->
-<div class="integration-section">
-  <div class="integration-card">
-    <div class="path-label">1‑Hour Integration</div>
-    <h2 class="path-title">One Script, Fully Live</h2>
-    <div class="path-desc">We install, sync, and launch your dashboard in under an hour.</div>
-    <div class="integration-steps">
-      <div class="integration-step">Run a single script on the clinic PC</div>
-      <div class="integration-step">Service + secure remote access installed</div>
-      <div class="integration-step">Data streams into your private schema</div>
-      <div class="integration-step">Dashboard goes live within 60 minutes</div>
+<div class="section">
+  <div style="max-width:700px;margin:0 auto">
+    <div class="integration-card">
+      <div class="section-label">1-Hour Integration</div>
+      <div class="section-title">One Script, Fully Live</div>
+      <div class="section-desc">We install, sync, and launch your dashboard in under an hour.</div>
+      <div class="integration-steps">
+        <div class="integration-step"><span class="step-num">1</span>Run a single script on the clinic PC</div>
+        <div class="integration-step"><span class="step-num">2</span>Service + secure remote access installed</div>
+        <div class="integration-step"><span class="step-num">3</span>Data streams into your private schema</div>
+        <div class="integration-step"><span class="step-num">4</span>Dashboard goes live within 60 minutes</div>
+      </div>
+      <a class="btn" href="#contact">Get Integrated &rarr;</a>
     </div>
-    <div class="path-btn"><a class="demo-link" href="#contact">Get integrated →</a></div>
   </div>
 </div>
 
+<hr class="divider"/>
+
 <!-- CONTACT -->
 <div class="contact-section" id="contact">
-  <div class="diff-label" style="text-align:center">Get in Touch</div>
+  <div class="section-label">Get in Touch</div>
   <h2>Questions? Let's Talk.</h2>
-  <p>Whether you're ready to get started or just want to know more, we're happy to help find the right fit for your clinic.</p>
-
+  <p>Ready to get started or just want to know more — we're happy to find the right fit for your clinic.</p>
   <div class="contact-form">
     <div class="form-row">
       <div class="form-group">
@@ -428,7 +424,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:32px 40px;displ
     </div>
     <div class="form-group">
       <label class="form-label">Email</label>
-      <input class="form-input" id="cf-email" type="email" placeholder="jane@rivervallevet.ca"/>
+      <input class="form-input" id="cf-email" type="email" placeholder="jane@rivervalleyvet.ca"/>
     </div>
     <div class="form-group">
       <label class="form-label">Clinic Name</label>
@@ -437,7 +433,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:32px 40px;displ
     <div class="form-group">
       <label class="form-label">What are you interested in?</label>
       <select class="form-input" id="cf-interest">
-        <option value="">Select an option…</option>
+        <option value="">Select an option</option>
         <option value="reports">Report Generation</option>
         <option value="pms">PMS Integration</option>
         <option value="both">Both</option>
@@ -446,14 +442,13 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:32px 40px;displ
     </div>
     <div class="form-group">
       <label class="form-label">Message</label>
-      <textarea class="form-input" id="cf-message" placeholder="Tell us about your clinic…"></textarea>
+      <textarea class="form-input" id="cf-message" placeholder="Tell us about your clinic"></textarea>
     </div>
-    <button class="btn-submit" id="cf-submit" onclick="submitForm()">Send Message</button>
+    <button class="btn" style="width:100%;justify-content:center" id="cf-submit" onclick="submitForm()">Send Message</button>
     <div class="form-status" id="cf-status"></div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <a class="footer-logo" href="index.html">
     <div class="footer-logo-icon">
@@ -469,71 +464,42 @@ footer{background:var(--navy);color:rgba(255,255,255,.5);padding:32px 40px;displ
   <div class="footer-copy">© 2026 Vet INC by Wilde Automations · Alberta, Canada</div>
 </footer>
 
-<!-- Structured Data -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Vet INC",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "description": "Smart revenue tools for veterinary clinics. Automated pricing campaigns, expense monitoring, and daily operations analysis.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "CAD",
-    "description": "Free demo — full integration available"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "Wilde Automations",
-    "url": "https://wildeautomations.com"
-  },
-  "url": "https://vetinc.ca/"
-}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vet INC","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Smart revenue tools for veterinary clinics. Automated pricing campaigns, expense monitoring, and daily operations analysis.","offers":{"@type":"Offer","price":"0","priceCurrency":"CAD","description":"Free demo — full integration available"},"provider":{"@type":"Organization","name":"Wilde Automations","url":"https://wildeautomations.com"},"url":"https://vetinc.ca/"}
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Vet INC",
-  "url": "https://vetinc.ca/",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "sales",
-    "url": "https://vetinc.ca/#contact"
-  }
-}
+{"@context":"https://schema.org","@type":"Organization","name":"Vet INC","url":"https://vetinc.ca/","contactPoint":{"@type":"ContactPoint","contactType":"sales","url":"https://vetinc.ca/#contact"}}
 </script>
-async function submitForm() {
-  const first = document.getElementById('cf-first').value.trim();
-  const last = document.getElementById('cf-last').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const clinic = document.getElementById('cf-clinic').value.trim();
-  const interest = document.getElementById('cf-interest').value;
-  const message = document.getElementById('cf-message').value.trim();
-  if (!first || !email || !clinic) { showStatus('Please fill in your name, email, and clinic name.', 'error'); return; }
-  const btn = document.getElementById('cf-submit');
-  btn.disabled = true; btn.textContent = 'Sending…';
-  try {
-    const SB_URL = 'https://xacehhtgvubcqdoltazg.supabase.co';
-    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhY2VoaHRndnViY3Fkb2x0YXpnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Mzk0Mjg2NywiZXhwIjoyMDg5NTE4ODY3fQ.5sqLtRtRnWEEuytTsfGhh1hmrQkTilL4Bd_rMrqmQ9A';
-    const res = await fetch(`${SB_URL}/rest/v1/vet_solutions_contacts`, {
-      method: 'POST',
-      headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-      body: JSON.stringify({ first_name: first, last_name: last, email, clinic_name: clinic, interest, message, submitted_at: new Date().toISOString() })
+<script>
+async function submitForm(){
+  const first=document.getElementById('cf-first').value.trim();
+  const last=document.getElementById('cf-last').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const clinic=document.getElementById('cf-clinic').value.trim();
+  const interest=document.getElementById('cf-interest').value;
+  const message=document.getElementById('cf-message').value.trim();
+  if(!first||!email||!clinic){showStatus('Please fill in your name, email, and clinic name.','error');return}
+  const btn=document.getElementById('cf-submit');
+  btn.disabled=true;btn.textContent='Sending...';
+  try{
+    const SB_URL='https://xacehhtgvubcqdoltazg.supabase.co';
+    const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhhY2VoaHRndnViY3Fkb2x0YXpnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Mzk0Mjg2NywiZXhwIjoyMDg5NTE4ODY3fQ.5sqLtRtRnWEEuytTsfGhh1hmrQkTilL4Bd_rMrqmQ9A';
+    const res=await fetch(`${SB_URL}/rest/v1/vet_solutions_contacts`,{
+      method:'POST',
+      headers:{'apikey':SB_KEY,'Authorization':`Bearer ${SB_KEY}`,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({first_name:first,last_name:last,email,clinic_name:clinic,interest,message,submitted_at:new Date().toISOString()})
     });
-    if (res.ok || res.status === 201) {
-      showStatus('Message sent — we\'ll be in touch within 24 hours.', 'success');
-      ['cf-first','cf-last','cf-email','cf-clinic','cf-message'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('cf-interest').value = '';
-    } else { throw new Error(); }
-  } catch { showStatus('Something went wrong. Email us at wildeautomations@gmail.com', 'error'); }
-  btn.disabled = false; btn.textContent = 'Send Message';
+    if(res.ok||res.status===201){
+      showStatus('Message sent — we\'ll be in touch within 24 hours.','success');
+      ['cf-first','cf-last','cf-email','cf-clinic','cf-message'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('cf-interest').value='';
+    }else{throw new Error()}
+  }catch{showStatus('Something went wrong. Email us at wildeautomations@gmail.com','error')}
+  btn.disabled=false;btn.textContent='Send Message';
 }
-function showStatus(msg, type) {
-  const el = document.getElementById('cf-status');
-  el.textContent = msg; el.className = 'form-status ' + type;
+function showStatus(msg,type){
+  const el=document.getElementById('cf-status');
+  el.textContent=msg;el.className='form-status '+type;
 }
 </script>
 </body>
