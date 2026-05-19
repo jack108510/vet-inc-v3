@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vet INC — Practice Valuation Tool</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:#1a1a1a;min-height:100vh;overflow-x:hidden}
+.header{background:#1a1a1a;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:22px;font-weight:800;color:#fff;letter-spacing:1px}.logo span{color:#64a70b}
+.nav-links a{color:#999;text-decoration:none;font-size:14px;margin-left:20px;transition:color .2s}.nav-links a:hover{color:#64a70b}
+.progress-bar{height:4px;background:#e5e5e5;position:relative}
+.progress-fill{height:100%;background:#64a70b;transition:width .5s ease;width:0}
+.container{max-width:640px;margin:0 auto;padding:40px 24px;min-height:calc(100vh - 60px)}
+.step{display:none;animation:slideIn .5s ease}.step.active{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes reveal{0%{opacity:0;transform:translateY(40px) scale(.95)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.step-label{font-size:13px;color:#999;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.question{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:32px}
+.text-input{width:100%;padding:16px 20px;font-size:24px;font-weight:600;border:2px solid #e5e5e5;border-radius:12px;outline:none;transition:border-color .2s;color:#1a1a1a}
+.text-input:focus{border-color:#64a70b}
+.text-input::placeholder{color:#ccc;font-weight:400;font-size:20px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.choice-btn{flex:1;min-width:120px;padding:16px 24px;font-size:18px;font-weight:600;border:2px solid #e5e5e5;border-radius:12px;background:#fff;cursor:pointer;transition:all .2s;text-align:center}
+.choice-btn:hover{border-color:#64a70b;background:#f8fdf2}
+.choice-btn.selected{border-color:#64a70b;background:#64a70b;color:#fff}
+.nav-btns{margin-top:40px;display:flex;justify-content:space-between}
+.next-btn{padding:14px 36px;font-size:16px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .2s;background:#64a70b;color:#fff}
+.next-btn:hover{background:#5a960a;transform:translateY(-1px)}
+.next-btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
+.back-btn{padding:14px 24px;font-size:16px;font-weight:600;border:2px solid #e5e5e5;border-radius:10px;background:#fff;cursor:pointer;transition:all .2s;color:#666}
+.back-btn:hover{border-color:#999;color:#333}
+/* Results */
+.results-page{display:none}.results-page.active{display:block;animation:reveal .8s ease}
+.result-hero{text-align:center;padding:48px 0 32px}
+.result-hero .label{font-size:14px;text-transform:uppercase;letter-spacing:3px;color:#999;margin-bottom:12px}
+.result-hero .value{font-size:52px;font-weight:800;color:#64a70b;animation:countUp .8s ease;line-height:1.1}
+.result-hero .range{font-size:18px;color:#666;margin-top:12px}
+.result-hero .subtext{font-size:14px;color:#999;margin-top:8px}
+.metrics-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:32px 0}
+.metric-card{background:#f8faf5;border-radius:12px;padding:20px;text-align:center}
+.metric-card .metric-value{font-size:22px;font-weight:700;color:#1a1a1a}
+.metric-card .metric-label{font-size:12px;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.section-title{font-size:20px;font-weight:700;margin:40px 0 16px;padding-top:24px;border-top:1px solid #eee}
+.driver-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:12px;display:flex;align-items:center;gap:16px}
+.driver-icon{width:44px;height:44px;border-radius:10px;background:#f0f7e6;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.driver-card .driver-text h4{font-size:15px;font-weight:600}.driver-card .driver-text p{font-size:13px;color:#888;margin-top:2px}
+.tip-card{background:linear-gradient(135deg,#f8faf5,#fff);border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:12px}
+.tip-card .tip-num{font-size:12px;font-weight:700;color:#64a70b;text-transform:uppercase;letter-spacing:1px}
+.tip-card h4{font-size:16px;font-weight:600;margin:6px 0 4px}
+.tip-card p{font-size:14px;color:#666;line-height:1.5}
+.cta-box{text-align:center;margin:48px 0 32px;padding:40px 24px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);border-radius:16px;color:#fff}
+.cta-box h3{font-size:22px;font-weight:700;margin-bottom:8px}
+.cta-box p{color:#aaa;font-size:15px;margin-bottom:24px}
+.cta-btn{display:inline-block;padding:16px 40px;font-size:17px;font-weight:700;background:#64a70b;color:#fff;border-radius:10px;text-decoration:none;transition:all .2s}
+.cta-btn:hover{background:#5a960a;transform:translateY(-2px)}
+.disclaimer{font-size:12px;color:#999;text-align:center;padding:16px 0;line-height:1.6}
+@media(max-width:600px){
+.question{font-size:22px}
+.result-hero .value{font-size:36px}
+.metrics-grid{grid-template-columns:1fr}
+.choice-btn{min-width:0}
+.header{padding:12px 16px}
+.container{padding:32px 16px}
+}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">VET<span>INC</span></div>
+<div class="nav-links"><a href="https://vetinc.ca">Home</a><a href="https://vetinc.ca/#about">About</a><a href="https://vetinc.ca/#contact">Contact</a></div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="container" id="formContainer">
+
+<!-- Step 1 -->
+<div class="step active" data-step="1">
+<div class="step-label">Step 1 of 8</div>
+<div class="question">What's your clinic's annual gross revenue?</div>
+<div class="btn-row"><input type="text" class="text-input" id="revenue" placeholder="$500,000" inputmode="numeric"></div>
+<div class="nav-btns"><div></div><button class="next-btn" onclick="nextStep()">Continue →</button></div>
+</div>
+
+<!-- Step 2 -->
+<div class="step" data-step="2">
+<div class="step-label">Step 2 of 8</div>
+<div class="question">How many veterinarians work at your practice (including yourself)?</div>
+<div class="btn-row" id="vetBtns">
+<button class="choice-btn" data-val="1">1</button>
+<button class="choice-btn" data-val="2">2</button>
+<button class="choice-btn" data-val="3">3</button>
+<button class="choice-btn" data-val="4">4</button>
+<button class="choice-btn" data-val="5">5+</button>
+</div>
+<div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="nextStep()">Continue →</button></div>
+</div>
+
+<!-- Step 3 -->
+<div class="step" data-step="3">
+<div class="step-label">Step 3 of 8</div>
+<div class="question">How many support staff do you employ?</div>
+<div class="btn-row" id="staffBtns">
+<button class="choice-btn" data-val="1-5">1–5</button>
+<button class="choice-btn" data-val="6-10">6–10</button>
+<button class="choice-btn" data-val="11-20">11–20</button>
+<button class="choice-btn" data-val="20+">20+</button>
+</div>
+<div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="nextStep()">Continue →</button></div>
+</div>
+
+<!-- Step 4 -->
+<div class="step" data-step="4">
+<div class="step-label">Step 4 of 8</div>
+<div class="question">Do you own or rent your clinic space?</div>
+<div class="btn-row" id="ownRentBtns">
+<button class="choice-btn" data-val="own">Own</button>
+<button class="choice-btn" data-val="rent">Rent</button>
+</div>
+<div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="nextStep()">Continue →</button></div>
+</div>
+
+<!-- Step 5 -->
+<div class="step" data-step="5">
+<div class="step-label">Step 5 of 8</div>
+<div class="question">What's your approximate annual rent or mortgage payment?</div>
+<div class="btn-row"><input type="text" class="text-input" id="rent" placeholder="$60,000" inputmode="numeric"></div>
+<div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="nextStep()">Continue →</button></div>
+</div>
+
+<!-- Step 6 -->
+<div class="step" data-step="6">
+<div class="step-label" id="step6label">Step 5 of 7</div>
+<div class="question">Has your revenue been growing, stable, or declining over the past 3 years?</div>
+<div class="btn-row" id="trendBtns">
+<button class="choice-btn" data-val="growing">📈 Growing</button>
+<button class="choice-btn" data-val="stable">➡️ Stable</button>
+<button class="choice-btn" data-val="declining">📉 Declining</button>
+</div>
+<div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="nextStep()">Continue →</button></div>
+</div>
+
+<!-- Step 7 -->
+<div class="step" data-step="7">
+<div class="step-label" id="step7label">Step 6 of 7</div>
+<div class="question">How many active clients does your practice serve?</div>
+<div class="btn-row" id="clientsBtns">
+<button class="choice-btn" data-val="<1000">&lt;1,000</button>
+<button class="choice-btn" data-val="1000-3000">1,000–3,000</button>
+<button class="choice-btn" data-val="3000-5000">3,000–5,000</button>
+<button class="choice-btn" data-val="5000+">5,000+</button>
+</div>
+<div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="nextStep()">Continue →</button></div>
+</div>
+
+<!-- Step 8 -->
+<div class="step" data-step="8">
+<div class="step-label" id="step8label">Step 7 of 7</div>
+<div class="question">What's your zip/postal code?</div>
+<div class="btn-row"><input type="text" class="text-input" id="postalcode" placeholder="T2X 1V4" style="font-size:22px"></div>
+<div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="calculate()">Get My Valuation →</button></div>
+</div>
+</div>
+
+<!-- Results -->
+<div class="container results-page" id="resultsPage">
+<div class="result-hero">
+<div class="label">Estimated Practice Value</div>
+<div class="value" id="resultValue">$0</div>
+<div class="range" id="resultRange"></div>
+<div class="subtext">Based on industry-standard veterinary practice valuation methods</div>
+</div>
+<div class="metrics-grid">
+<div class="metric-card"><div class="metric-value" id="metricEbitda">—</div><div class="metric-label">Est. EBITDA</div></div>
+<div class="metric-card"><div class="metric-value" id="metricMargin">—</div><div class="metric-label">EBITDA Margin</div></div>
+<div class="metric-card"><div class="metric-value" id="metricMultiple">—</div><div class="metric-label">EBITDA Multiple</div></div>
+</div>
+<div class="section-title">Here's what drives your value</div>
+<div id="driversContainer"></div>
+<div class="section-title">How to increase your valuation</div>
+<div id="tipsContainer"></div>
+<div class="cta-box">
+<h3>Want a precise valuation?</h3>
+<p>Connect your practice management data and get an exact number — not an estimate.</p>
+<a href="https://vetinc.ca/#contact" class="cta-btn">Get Full Analysis</a>
+</div>
+<div class="disclaimer">This estimate is for informational purposes only and does not constitute a formal business valuation. Actual practice values may vary significantly based on factors not captured in this tool. Consult with a veterinary practice valuation professional for an accurate assessment.</div>
+</div>
+
+<script>
+const answers = { vets: null, staff: null, ownRent: null, trend: null, clients: null };
+let currentStep = 1;
+let totalSteps = 8;
+
+// Format currency input
+document.getElementById('revenue').addEventListener('input', formatCurrency);
+document.getElementById('rent').addEventListener('input', formatCurrency);
+function formatCurrency(e) {
+  let v = e.target.value.replace(/[^0-9]/g, '');
+  if (v) e.target.value = '$' + parseInt(v).toLocaleString('en-US');
+  else e.target.value = '';
+}
+
+// Choice button handling
+document.querySelectorAll('.btn-row').forEach(row => {
+  row.querySelectorAll('.choice-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      row.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+});
+
+function parseCurrency(s) { return parseInt(s.replace(/[^0-9]/g, '')) || 0; }
+
+function getSelected(id) {
+  const btn = document.querySelector('#' + id + ' .choice-btn.selected');
+  return btn ? btn.dataset.val : null;
+}
+
+function updateProgress() {
+  const pct = ((currentStep - 1) / (totalSteps - 1)) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function showStep(n) {
+  currentStep = n;
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  const el = document.querySelector(`.step[data-step="${n}"]`);
+  if (el) el.classList.add('active');
+  updateProgress();
+}
+
+function nextStep() {
+  // Validate current
+  if (currentStep === 1 && !parseCurrency(document.getElementById('revenue').value)) return alert('Please enter your annual revenue.');
+  if (currentStep === 2 && !getSelected('vetBtns')) return alert('Please select an option.');
+  if (currentStep === 3 && !getSelected('staffBtns')) return alert('Please select an option.');
+  if (currentStep === 4) {
+    if (!getSelected('ownRentBtns')) return alert('Please select an option.');
+    answers.ownRent = getSelected('ownRentBtns');
+    if (answers.ownRent === 'own') {
+      // Skip step 5, adjust labels
+      totalSteps = 7;
+      showStep(6);
+      document.getElementById('step6label').textContent = 'Step 5 of 7';
+      document.getElementById('step7label').textContent = 'Step 6 of 7';
+      document.getElementById('step8label').textContent = 'Step 7 of 7';
+      return;
+    }
+  }
+  if (currentStep === 5 && !parseCurrency(document.getElementById('rent').value)) return alert('Please enter your annual rent/mortgage.');
+  if (currentStep === 6 && !getSelected('trendBtns')) return alert('Please select an option.');
+  if (currentStep === 7 && !getSelected('clientsBtns')) return alert('Please select an option.');
+  if (currentStep === 8 && !document.getElementById('postalcode').value.trim()) return alert('Please enter your postal code.');
+  showStep(currentStep + 1);
+}
+
+function prevStep() {
+  if (currentStep === 6 && answers.ownRent === 'own') {
+    totalSteps = 8;
+    showStep(4);
+    return;
+  }
+  if (currentStep > 1) showStep(currentStep - 1);
+}
+
+function calculate() {
+  if (!document.getElementById('postalcode').value.trim()) return alert('Please enter your postal code.');
+
+  const revenue = parseCurrency(document.getElementById('revenue').value);
+  answers.vets = getSelected('vetBtns');
+  answers.staff = getSelected('staffBtns');
+  answers.trend = getSelected('trendBtns');
+  answers.clients = getSelected('clientsBtns');
+  const postalCode = document.getElementById('postalcode').value.trim().toUpperCase();
+  const rentAmount = answers.ownRent === 'rent' ? parseCurrency(document.getElementById('rent').value) : 0;
+
+  // EBITDA calc
+  let staffPct = 0.45;
+  if (answers.vets === '1') staffPct -= 0.03;
+  if (answers.vets === '5') staffPct += 0.02;
+
+  const staffCost = revenue * staffPct;
+  const supplies = revenue * 0.18;
+  const rent = rentAmount || (answers.ownRent === 'own' ? revenue * 0.08 : 0);
+  const other = revenue * 0.12;
+  const ebitda = revenue - staffCost - supplies - rent - other;
+
+  // Multiple calc
+  let multiple = 4;
+  const vetNum = answers.vets === '5' ? 5 : parseInt(answers.vets);
+  if (vetNum > 1) multiple += (vetNum - 1) * 0.5;
+  if (answers.trend === 'growing') multiple += 1;
+  if (answers.trend === 'declining') multiple -= 1;
+
+  const urbanPrefixes = ['T','M','V','H','K','L','R','G','B'];
+  const firstChar = postalCode.charAt(0);
+  const isUrban = urbanPrefixes.includes(firstChar);
+  if (isUrban) multiple += 1;
+  if (answers.ownRent === 'own') multiple += 0.5;
+  if (['3000-5000','5000+'].includes(answers.clients)) multiple += 0.5;
+  multiple = Math.max(2, Math.min(10, multiple));
+
+  const valuation = ebitda * multiple;
+  const low = valuation * 0.8;
+  const high = valuation * 1.2;
+  const margin = ((ebitda / revenue) * 100).toFixed(1);
+
+  // Hide form, show results
+  document.getElementById('formContainer').style.display = 'none';
+  document.getElementById('progressFill').style.width = '100%';
+  const rp = document.getElementById('resultsPage');
+  rp.classList.add('active');
+
+  document.getElementById('resultValue').textContent = fmt(valuation);
+  document.getElementById('resultRange').textContent = fmt(low) + ' – ' + fmt(high);
+  document.getElementById('metricEbitda').textContent = fmt(ebitda);
+  document.getElementById('metricMargin').textContent = margin + '%';
+  document.getElementById('metricMultiple').textContent = multiple.toFixed(1) + 'x';
+
+  // Drivers
+  const drivers = [];
+  drivers.push({ icon: '💰', title: 'Revenue Base', desc: fmt(revenue) + ' annual gross revenue' });
+  if (vetNum >= 2) drivers.push({ icon: '👨‍⚕️', title: 'Multi-Doctor Practice', desc: '+' + ((vetNum - 1) * 0.5).toFixed(1) + 'x multiple bonus for ' + vetNum + ' vets' });
+  if (answers.trend === 'growing') drivers.push({ icon: '📈', title: 'Revenue Growth', desc: '+1.0x multiple — buyers love growing practices' });
+  if (isUrban) drivers.push({ icon: '🏙️', title: 'Urban Location', desc: '+1.0x — metro areas command premium valuations' });
+  if (answers.ownRent === 'own') drivers.push({ icon: '🏢', title: 'Owned Real Estate', desc: '+0.5x — building ownership adds tangible value' });
+  if (['3000-5000','5000+'].includes(answers.clients)) drivers.push({ icon: '👥', title: 'Large Client Base', desc: '+0.5x — ' + answers.clients + ' active clients = strong recurring revenue' });
+
+  const dc = document.getElementById('driversContainer');
+  dc.innerHTML = drivers.map(d => `<div class="driver-card"><div class="driver-icon">${d.icon}</div><div class="driver-text"><h4>${d.title}</h4><p>${d.desc}</p></div></div>`).join('');
+
+  // Tips
+  const tips = [];
+  if (answers.trend !== 'growing') tips.push({ title: 'Accelerate revenue growth', desc: 'Growing practices command a +1x multiple premium. Focus on client retention, expand services, or add a new veterinarian.' });
+  if (answers.ownRent !== 'own') tips.push({ title: 'Consider purchasing your building', desc: 'Owning your clinic space adds +0.5x to your multiple and provides an additional appreciating asset.' });
+  if (!['3000-5000','5000+'].includes(answers.clients)) tips.push({ title: 'Grow your active client base', desc: 'Practices with 3,000+ active clients earn a +0.5x bonus. Invest in marketing and community outreach.' });
+  if (vetNum < 3) tips.push({ title: 'Add associate veterinarians', desc: 'Each additional vet beyond the first adds +0.5x to your multiple. Multi-doctor practices are significantly more valuable.' });
+  if (margin < 20) tips.push({ title: 'Improve your profit margin', desc: 'Your EBITDA margin is ' + margin + '%. Industry leaders target 20-25%. Review staffing efficiency and supply costs.' });
+
+  const tc = document.getElementById('tipsContainer');
+  tc.innerHTML = tips.slice(0, 3).map((t, i) => `<div class="tip-card"><div class="tip-num">Tip ${i + 1}</div><h4>${t.title}</h4><p>${t.desc}</p></div>`).join('');
+}
+
+function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+</script>
+</body>
+</html>
