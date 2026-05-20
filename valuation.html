@@ -8,10 +8,10 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;color:#1a1a1a;min-height:100vh;overflow-x:hidden}
 .header{background:#1a1a1a;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{font-size:22px;font-weight:800;color:#fff;letter-spacing:1px}.logo span{color:#64a70b}
-.nav-links a{color:#999;text-decoration:none;font-size:14px;margin-left:20px;transition:color .2s}.nav-links a:hover{color:#64a70b}
+.logo{font-size:22px;font-weight:800;color:#fff;letter-spacing:1px}.logo span{color:#2563eb}
+.nav-links a{color:#999;text-decoration:none;font-size:14px;margin-left:20px;transition:color .2s}.nav-links a:hover{color:#2563eb}
 .progress-bar{height:4px;background:#e5e5e5;position:relative}
-.progress-fill{height:100%;background:#64a70b;transition:width .5s ease;width:0}
+.progress-fill{height:100%;background:#2563eb;transition:width .5s ease;width:0}
 .container{max-width:640px;margin:0 auto;padding:40px 24px;min-height:calc(100vh - 60px)}
 .step{display:none;animation:slideIn .5s ease}.step.active{display:block}
 @keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
@@ -21,15 +21,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .step-label{font-size:13px;color:#999;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
 .question{font-size:26px;font-weight:700;line-height:1.3;margin-bottom:32px}
 .text-input{width:100%;padding:16px 20px;font-size:24px;font-weight:600;border:2px solid #e5e5e5;border-radius:12px;outline:none;transition:border-color .2s;color:#1a1a1a}
-.text-input:focus{border-color:#64a70b}
+.text-input:focus{border-color:#2563eb}
 .text-input::placeholder{color:#ccc;font-weight:400;font-size:20px}
 .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .choice-btn{flex:1;min-width:120px;padding:16px 24px;font-size:18px;font-weight:600;border:2px solid #e5e5e5;border-radius:12px;background:#fff;cursor:pointer;transition:all .2s;text-align:center}
-.choice-btn:hover{border-color:#64a70b;background:#f8fdf2}
-.choice-btn.selected{border-color:#64a70b;background:#64a70b;color:#fff}
+.choice-btn:hover{border-color:#2563eb;background:#eff6ff}
+.choice-btn.selected{border-color:#2563eb;background:#2563eb;color:#fff}
 .nav-btns{margin-top:40px;display:flex;justify-content:space-between}
-.next-btn{padding:14px 36px;font-size:16px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .2s;background:#64a70b;color:#fff}
-.next-btn:hover{background:#5a960a;transform:translateY(-1px)}
+.next-btn{padding:14px 36px;font-size:16px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .2s;background:#2563eb;color:#fff}
+.next-btn:hover{background:#1d4ed8;transform:translateY(-1px)}
 .next-btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
 .back-btn{padding:14px 24px;font-size:16px;font-weight:600;border:2px solid #e5e5e5;border-radius:10px;background:#fff;cursor:pointer;transition:all .2s;color:#666}
 .back-btn:hover{border-color:#999;color:#333}
@@ -37,26 +37,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .results-page{display:none}.results-page.active{display:block;animation:reveal .8s ease}
 .result-hero{text-align:center;padding:48px 0 32px}
 .result-hero .label{font-size:14px;text-transform:uppercase;letter-spacing:3px;color:#999;margin-bottom:12px}
-.result-hero .value{font-size:52px;font-weight:800;color:#64a70b;animation:countUp .8s ease;line-height:1.1}
+.result-hero .value{font-size:52px;font-weight:800;color:#2563eb;animation:countUp .8s ease;line-height:1.1}
 .result-hero .range{font-size:18px;color:#666;margin-top:12px}
 .result-hero .subtext{font-size:14px;color:#999;margin-top:8px}
 .metrics-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:32px 0}
-.metric-card{background:#f8faf5;border-radius:12px;padding:20px;text-align:center}
+.metric-card{background:#eff6ff;border-radius:12px;padding:20px;text-align:center}
 .metric-card .metric-value{font-size:22px;font-weight:700;color:#1a1a1a}
 .metric-card .metric-label{font-size:12px;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:1px}
 .section-title{font-size:20px;font-weight:700;margin:40px 0 16px;padding-top:24px;border-top:1px solid #eee}
 .driver-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:12px;display:flex;align-items:center;gap:16px}
-.driver-icon{width:44px;height:44px;border-radius:10px;background:#f0f7e6;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.driver-icon{width:44px;height:44px;border-radius:10px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .driver-card .driver-text h4{font-size:15px;font-weight:600}.driver-card .driver-text p{font-size:13px;color:#888;margin-top:2px}
-.tip-card{background:linear-gradient(135deg,#f8faf5,#fff);border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:12px}
-.tip-card .tip-num{font-size:12px;font-weight:700;color:#64a70b;text-transform:uppercase;letter-spacing:1px}
+.tip-card{background:linear-gradient(135deg,#eff6ff,#fff);border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:12px}
+.tip-card .tip-num{font-size:12px;font-weight:700;color:#2563eb;text-transform:uppercase;letter-spacing:1px}
 .tip-card h4{font-size:16px;font-weight:600;margin:6px 0 4px}
 .tip-card p{font-size:14px;color:#666;line-height:1.5}
 .cta-box{text-align:center;margin:48px 0 32px;padding:40px 24px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);border-radius:16px;color:#fff}
 .cta-box h3{font-size:22px;font-weight:700;margin-bottom:8px}
 .cta-box p{color:#aaa;font-size:15px;margin-bottom:24px}
-.cta-btn{display:inline-block;padding:16px 40px;font-size:17px;font-weight:700;background:#64a70b;color:#fff;border-radius:10px;text-decoration:none;transition:all .2s}
-.cta-btn:hover{background:#5a960a;transform:translateY(-2px)}
+.cta-btn{display:inline-block;padding:16px 40px;font-size:17px;font-weight:700;background:#2563eb;color:#fff;border-radius:10px;text-decoration:none;transition:all .2s}
+.cta-btn:hover{background:#1d4ed8;transform:translateY(-2px)}
 .disclaimer{font-size:12px;color:#999;text-align:center;padding:16px 0;line-height:1.6}
 @media(max-width:600px){
 .question{font-size:22px}
@@ -135,9 +135,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="step-label" id="step6label">Step 5 of 7</div>
 <div class="question">Has your revenue been growing, stable, or declining over the past 3 years?</div>
 <div class="btn-row" id="trendBtns">
-<button class="choice-btn" data-val="growing">📈 Growing</button>
-<button class="choice-btn" data-val="stable">➡️ Stable</button>
-<button class="choice-btn" data-val="declining">📉 Declining</button>
+<button class="choice-btn" data-val="growing">Growing</button>
+<button class="choice-btn" data-val="stable">Stable</button>
+<button class="choice-btn" data-val="declining">Declining</button>
 </div>
 <div class="nav-btns"><button class="back-btn" onclick="prevStep()">← Back</button><button class="next-btn" onclick="nextStep()">Continue →</button></div>
 </div>
@@ -323,12 +323,13 @@ function calculate() {
 
   // Drivers
   const drivers = [];
-  drivers.push({ icon: '💰', title: 'Revenue Base', desc: fmt(revenue) + ' annual gross revenue' });
-  if (vetNum >= 2) drivers.push({ icon: '👨‍⚕️', title: 'Multi-Doctor Practice', desc: '+' + ((vetNum - 1) * 0.5).toFixed(1) + 'x multiple bonus for ' + vetNum + ' vets' });
-  if (answers.trend === 'growing') drivers.push({ icon: '📈', title: 'Revenue Growth', desc: '+1.0x multiple — buyers love growing practices' });
-  if (isUrban) drivers.push({ icon: '🏙️', title: 'Urban Location', desc: '+1.0x — metro areas command premium valuations' });
-  if (answers.ownRent === 'own') drivers.push({ icon: '🏢', title: 'Owned Real Estate', desc: '+0.5x — building ownership adds tangible value' });
-  if (['3000-5000','5000+'].includes(answers.clients)) drivers.push({ icon: '👥', title: 'Large Client Base', desc: '+0.5x — ' + answers.clients + ' active clients = strong recurring revenue' });
+  drivers.push({ icon: ', title: 'Revenue Base', desc: fmt(revenue) + ' annual gross revenue' });
+, title: 'Revenue Base', desc: fmt(revenue) + ' annual gross revenue' });
+  if (vetNum >= 2) drivers.push({ icon: '+', title: 'Multi-Doctor Practice', desc: '+' + ((vetNum - 1) * 0.5).toFixed(1) + 'x multiple bonus for ' + vetNum + ' vets' });
+  if (answers.trend === 'growing') drivers.push({ icon: '↑', title: 'Revenue Growth', desc: '+1.0x multiple — buyers love growing practices' });
+  if (isUrban) drivers.push({ icon: '⬡', title: 'Urban Location', desc: '+1.0x — metro areas command premium valuations' });
+  if (answers.ownRent === 'own') drivers.push({ icon: '■', title: 'Owned Real Estate', desc: '+0.5x — building ownership adds tangible value' });
+  if (['3000-5000','5000+'].includes(answers.clients)) drivers.push({ icon: '◉', title: 'Large Client Base', desc: '+0.5x — ' + answers.clients + ' active clients = strong recurring revenue' });
 
   const dc = document.getElementById('driversContainer');
   dc.innerHTML = drivers.map(d => `<div class="driver-card"><div class="driver-icon">${d.icon}</div><div class="driver-text"><h4>${d.title}</h4><p>${d.desc}</p></div></div>`).join('');
