@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vet INC — Stop leaving money on the table</title>
+<title>Vet INC — Pricing Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#09090B;--surface:#18181B;--surface-hover:#27272A;--border:#27272A;--text:#FAFAFA;--text2:#A1A1AA;--text3:#71717A;--indigo:#2563eb;--violet:#3b82f6;--lviolet:#60a5fa;--cyan:#93c5fd;--emerald:#10B981;--amber:#F59E0B;--grad:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa)}
+:root{--bg:#09090B;--surface:#18181B;--surface-hover:#27272A;--border:#27272A;--text:#FAFAFA;--text2:#A1A1AA;--text3:#71717A;--indigo:#2563eb;--violet:#3b82f6;--lviolet:#60a5fa;--cyan:#93c5fd;--emerald:#10B981;--grad:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa)}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
@@ -23,7 +23,7 @@ a{color:inherit;text-decoration:none}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{color:var(--text2);font-size:.9rem;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
-.btn-grad{background:var(--grad);color:#fff;padding:.6rem 1.4rem;border-radius:8px;font-weight:600;font-size:.875rem;border:none;cursor:pointer;transition:opacity .2s,transform .2s}
+.btn-grad{background:var(--grad);color:#fff;padding:.6rem 1.4rem;border-radius:8px;font-weight:600;font-size:.875rem;border:none;cursor:pointer;transition:opacity .2s,transform .2s;display:inline-block}
 .btn-grad:hover{opacity:.9;transform:translateY(-1px)}
 .btn-outline{background:transparent;color:var(--text);padding:.6rem 1.4rem;border-radius:8px;font-weight:600;font-size:.875rem;border:1px solid var(--border);cursor:pointer;transition:all .2s}
 .btn-outline:hover{border-color:var(--text3);background:var(--surface)}
@@ -33,113 +33,59 @@ a{color:inherit;text-decoration:none}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.15),transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(139,92,246,.1),transparent 50%);animation:heroShift 8s ease-in-out infinite alternate}
 @keyframes heroShift{0%{opacity:.6;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
 .hero *{position:relative;z-index:1}
-.badge{display:inline-block;padding:.4rem 1rem;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:.8rem;font-weight:500;margin-bottom:1.5rem}
-.badge span{color:var(--cyan);font-weight:600}
-.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.5rem;max-width:800px}
-.hero p{font-size:clamp(1rem,2vw,1.2rem);color:var(--text2);max-width:640px;margin-bottom:2rem}
-.hero-buttons{display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap;justify-content:center}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.2rem;max-width:800px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(.95rem,1.8vw,1.15rem);color:var(--text2);max-width:640px;margin-bottom:1.5rem}
+
+/* Stat Hero */
+.hero-stat{font-size:clamp(3rem,8vw,5rem);font-weight:800;color:var(--emerald);margin:.5rem 0 .2rem}
+.hero-stat-label{font-size:1rem;color:var(--text2);margin-bottom:.2rem}
+.hero-stat-context{font-size:.85rem;color:var(--text3)}
+
+/* Section */
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:3rem}
+.section-head h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.75rem}
+.section-head p{color:var(--text2);font-size:1.05rem;max-width:600px;margin:0 auto}
+.section-head h2 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Strategy Cards */
+.strat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1000px;margin:0 auto}
+.strat-card{background:rgba(24,24,27,.6);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s}
+.strat-card:hover{border-color:rgba(99,102,241,.3);box-shadow:0 0 30px rgba(99,102,241,.08)}
+.strat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.strat-num{width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.strat-amount{font-size:1rem;font-weight:700;color:var(--emerald)}
+.strat-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.strat-card p{color:var(--text2);font-size:.9rem;line-height:1.65}
 
 /* Dashboard Preview */
-.dashboard-card{position:relative;width:100%;max-width:700px;border-radius:16px;padding:2px;background:linear-gradient(135deg,var(--indigo),var(--violet),var(--cyan),var(--indigo));background-size:300% 300%;animation:borderGlow 4s ease infinite}
+.dashboard-card{position:relative;width:100%;max-width:750px;border-radius:16px;padding:2px;background:linear-gradient(135deg,var(--indigo),var(--violet),var(--cyan),var(--indigo));background-size:300% 300%;animation:borderGlow 4s ease infinite;margin:0 auto}
 @keyframes borderGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.dashboard-inner{background:var(--surface);border-radius:14px;padding:1.5rem 2rem}
-.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
-.dash-title{font-weight:600;font-size:.9rem;color:var(--text2)}
-.dash-badge{font-size:.75rem;color:var(--emerald);font-weight:500}
-.dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
-.metric{text-align:center}
-.metric-val{font-size:1.5rem;font-weight:700;color:var(--text)}
-.metric-label{font-size:.7rem;color:var(--text3);margin-top:2px}
-.dash-bars{display:flex;align-items:flex-end;gap:6px;height:80px}
-.bar{flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;transition:opacity .2s}
-.bar:hover{opacity:1}
-.bar:nth-child(1){height:45%}.bar:nth-child(2){height:60%}.bar:nth-child(3){height:40%}.bar:nth-child(4){height:75%}.bar:nth-child(5){height:55%}.bar:nth-child(6){height:85%}.bar:nth-child(7){height:65%}.bar:nth-child(8){height:90%}.bar:nth-child(9){height:70%}.bar:nth-child(10){height:95%}
+.dashboard-inner{background:var(--surface);border-radius:14px;overflow:hidden}
+.dashboard-inner img{width:100%;display:block}
 
-/* Logos */
-.logos{padding:4rem 2rem;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.logos p{color:var(--text3);font-size:.85rem;margin-bottom:1.5rem;font-weight:500}
-.logo-row{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;align-items:center}
-.logo-row span{color:var(--text3);font-size:.9rem;font-weight:600;letter-spacing:.02em;opacity:.5;transition:opacity .3s}
-.logo-row span:hover{opacity:.8}
+/* How Grid */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1000px;margin:0 auto}
+.how-item{text-align:center;padding:1.5rem 1rem;background:rgba(24,24,27,.6);border:1px solid var(--border);border-radius:12px}
+.how-icon{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto .75rem}
+.how-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.how-item h4{font-size:.95rem;font-weight:600;margin-bottom:.4rem}
+.how-item p{font-size:.8rem;color:var(--text2);line-height:1.5}
 
-/* Features */
-.features{padding:6rem 2rem;max-width:1200px;margin:0 auto}
-.section-head{text-align:center;margin-bottom:3.5rem}
-.section-head h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.75rem}
-.section-head p{color:var(--text2);font-size:1.1rem}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.feat-card{background:rgba(24,24,27,.6);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
-.feat-card:hover{border-color:rgba(99,102,241,.3);box-shadow:0 0 30px rgba(99,102,241,.08)}
-.feat-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.15));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
-.feat-icon svg{width:20px;height:20px;stroke:var(--lviolet);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.feat-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
-.feat-card p{color:var(--text2);font-size:.9rem;line-height:1.6}
-
-/* How It Works */
-.how{padding:6rem 2rem;max-width:1200px;margin:0 auto}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative}
-.step{text-align:center;padding:2rem;position:relative}
-.step-num{width:48px;height:48px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;margin:0 auto 1rem}
-.step h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
-.step p{color:var(--text2);font-size:.9rem;max-width:280px;margin:0 auto}
-.steps::before{content:'';position:absolute;top:4rem;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-
-/* Stats */
-.stats{padding:6rem 2rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1000px;margin:0 auto;text-align:center}
-.stat-val{font-size:clamp(2rem,5vw,3rem);font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.25rem}
-.stat-label{color:var(--text2);font-size:.9rem}
-
-/* Case Study */
-.casestudy{padding:6rem 2rem;max-width:900px;margin:0 auto;text-align:center}
-.cs-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:3rem;text-align:left;position:relative}
-.cs-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);border-radius:16px 16px 0 0}
-.cs-name{font-size:1.3rem;font-weight:700;margin-bottom:1.5rem}
-.cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem}
-.cs-stat-val{font-size:1.3rem;font-weight:700;color:var(--cyan)}
-.cs-stat-label{font-size:.8rem;color:var(--text3);margin-top:.25rem}
-
-/* Pricing */
-.pricing{padding:6rem 2rem;max-width:1100px;margin:0 auto}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
-.price-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;transition:all .3s}
-.price-card.featured{border-color:var(--indigo);position:relative;transform:scale(1.03)}
-.price-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);padding:.3rem 1rem;border-radius:100px;font-size:.75rem;font-weight:600}
-.price-card h3{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
-.price-amount{font-size:2.2rem;font-weight:800;margin-bottom:.25rem}
-.price-period{color:var(--text3);font-size:.85rem;margin-bottom:1.5rem}
-.price-features{list-style:none;margin-bottom:2rem}
-.price-features li{color:var(--text2);font-size:.9rem;padding:.4rem 0;display:flex;align-items:center;gap:.5rem}
-.price-features li::before{content:'';width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310B981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/contain no-repeat;flex-shrink:0}
-
-/* FAQ */
-.faq{padding:6rem 2rem;max-width:700px;margin:0 auto}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;cursor:pointer;font-weight:600;font-size:1rem;transition:color .2s}
-.faq-q:hover{color:var(--cyan)}
-.faq-q svg{width:20px;height:20px;stroke:var(--text3);transition:transform .3s;flex-shrink:0}
-.faq-item.open .faq-q svg{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;color:var(--text2);font-size:.9rem;line-height:1.7}
-.faq-item.open .faq-a{max-height:200px;padding-bottom:1.25rem}
-
-/* CTA */
+/* CTA Section */
 .cta-section{padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
 .cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(99,102,241,.12),transparent 70%)}
 .cta-section>*{position:relative}
-.cta-section h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:.75rem}
-.cta-section p{color:var(--text2);margin-bottom:2rem;font-size:1.1rem}
+.cta-section h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;margin-bottom:.75rem}
+.cta-section p{color:var(--text2);margin-bottom:2rem;font-size:1.05rem}
 
 /* Footer */
-footer{padding:4rem 2rem;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
-.footer-tagline{color:var(--text3);font-size:.9rem;margin-top:.5rem}
-.footer-col h4{font-size:.8rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem}
-.footer-col a{display:block;color:var(--text2);font-size:.9rem;padding:.25rem 0;transition:color .2s}
-.footer-col a:hover{color:var(--text)}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid var(--border);color:var(--text3);font-size:.8rem;flex-wrap:wrap;gap:1rem}
-.social-links{display:flex;gap:1rem}
-.social-links a{color:var(--text3);transition:color .2s}
-.social-links a:hover{color:var(--text)}
+footer{padding:3rem 2rem;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer .logo{font-size:1rem}
+.footer-links{display:flex;gap:2rem;font-size:.85rem;color:var(--text3)}
+.footer-links a:hover{color:var(--text)}
 
 /* Fade in */
 .fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
@@ -148,14 +94,11 @@ footer{padding:4rem 2rem;border-top:1px solid var(--border);max-width:1200px;mar
 /* Mobile */
 @media(max-width:768px){
 .nav-links{display:none}
-.feat-grid,.price-grid,.steps,.stats-grid,.cs-stats{grid-template-columns:1fr}
-.footer-grid{grid-template-columns:1fr 1fr}
-.steps::before{display:none}
-.dash-metrics{grid-template-columns:repeat(3,1fr)}
+.strat-grid{grid-template-columns:1fr}
+.how-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:480px){
-.footer-grid{grid-template-columns:1fr}
-.dash-metrics{grid-template-columns:1fr}
+.how-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -164,12 +107,11 @@ footer{padding:4rem 2rem;border-top:1px solid var(--border);max-width:1200px;mar
 <!-- Navbar -->
 <div class="nav-wrap" id="navWrap"></div>
 <nav class="navbar" id="navbar">
-  <div class="logo"><img src="assets/logo.png" alt="Vet INC" style="height:120px"></div>
+  <div class="logo"><img src="assets/logo.png" alt="Vet INC" style="height:80px"></div>
   <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#casestudy">Case Studies</a>
-    <a href="#faq">About</a>
+    <a href="#how">How It Works</a>
+    <a href="#strategies">Strategies</a>
+    <a href="#dashboard">Dashboard</a>
     <a href="#cta" class="btn-grad">Book a Demo</a>
   </div>
 </nav>
@@ -177,243 +119,132 @@ footer{padding:4rem 2rem;border-top:1px solid var(--border);max-width:1200px;mar
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="badge">Trusted by <span>50+</span> veterinary practices</div>
-  <h1>Stop leaving money on the table.</h1>
-  <p>Vet INC analyzes your practice data to find hidden revenue, optimize pricing, and automate your front desk — so you can focus on what matters.</p>
-  <div class="hero-buttons">
-    <a href="#pricing" class="btn-grad">Start Free Audit</a>
-    <button class="btn-outline">Watch Demo</button>
+  <h1>Your clinic is leaving money on the table.<br><span>We built a system to take it back.</span></h1>
+  <p>Most vet owners are too busy to think about pricing. Years go by. Then they panic and raise everything 10% across the board. Clients get angry. Staff field complaints. They swear off price changes for another three years.</p>
+  <p style="color:var(--text);max-width:640px">We built an AI-powered platform that makes pricing gradual, precise, and data-driven. No panic increases. No angry clients. Just steady, measurable revenue growth.</p>
+  <div style="margin-top:1.5rem">
+    <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--text3);margin-bottom:.2rem">First year results on a single clinic</div>
+    <div class="hero-stat">$55,913</div>
+    <div class="hero-stat-label">profit recovered</div>
+    <div class="hero-stat-context">$1.39M revenue &middot; 926 service codes &middot; 4% revenue recovery</div>
+    <div class="hero-stat-context" style="color:var(--text2)">Same patients. Same doctors. Same appointments.</div>
   </div>
-  <div class="dashboard-card fade-in">
-    <div class="dashboard-inner">
-      <div class="dash-header">
-        <span class="dash-title">Practice Revenue Dashboard</span>
-        <span class="dash-badge">+23% opportunity found</span>
-      </div>
-      <div class="dash-metrics">
-        <div class="metric"><div class="metric-val">$48.2K</div><div class="metric-label">Revenue This Quarter</div></div>
-        <div class="metric"><div class="metric-val">926</div><div class="metric-label">Codes Analyzed</div></div>
-        <div class="metric"><div class="metric-val">94%</div><div class="metric-label">Client Retention</div></div>
-      </div>
-      <div class="dash-bars">
-        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Logos -->
-<section class="logos">
-  <p>Powering practices across North America</p>
-  <div class="logo-row">
-    <span>Rosslyn Veterinary</span>
-    <span>Maple Creek Animal Hospital</span>
-    <span>Paws &amp; Claws Vet</span>
-    <span>Westwood Pet Clinic</span>
-    <span>River Valley Animal Health</span>
-    <span>Summit Veterinary Group</span>
-  </div>
-</section>
-
-<!-- Features -->
-<section class="features fade-in" id="features">
-  <div class="section-head">
-    <h2>Everything your practice needs</h2>
-    <p>One platform. Zero complexity.</p>
-  </div>
-  <div class="feat-grid">
-    <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-      <h3>Revenue Intelligence</h3>
-      <p>Find the $20K-$50K you're leaving on the table with automated pricing analysis.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-      <h3>AI Front Desk</h3>
-      <p>Your 24/7 receptionist that never calls in sick. Books appointments, answers questions, handles intake.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-      <h3>Practice Analytics</h3>
-      <p>Real-time dashboards showing revenue per service, client retention, and growth trends.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      <h3>Client Retention</h3>
-      <p>Automated follow-ups, recall reminders, and re-engagement campaigns that keep clients coming back.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-      <h3>Code Optimization</h3>
-      <p>We analyze every billing code and show you exactly which ones are underpriced.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-      <h3>Competitor Benchmarking</h3>
-      <p>See how your pricing compares to clinics in your area — without anyone knowing.</p>
-    </div>
+  <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;justify-content:center">
+    <a href="#cta" class="btn-grad">Get Free Analysis</a>
+    <a href="#strategies" class="btn-outline">See How</a>
   </div>
 </section>
 
 <!-- How It Works -->
-<section class="how fade-in">
-  <div class="section-head">
-    <h2>Three steps. Thirty days. More revenue.</h2>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Connect</h3>
-      <p>We integrate with your PMS — Cornerstone, AVImark, or any system. Zero disruption.</p>
+<section id="how" class="fade-in">
+  <div class="container">
+    <div class="section-head">
+      <h2>How the <span>AI</span> works</h2>
+      <p>Four steps. Continuous improvement. Self-correcting.</p>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Analyze</h3>
-      <p>Our AI scans your billing codes, pricing, client data, and appointment patterns.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Grow</h3>
-      <p>Get a clear action plan with exact dollar amounts. Implement changes, track results.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Stats -->
-<section class="stats fade-in">
-  <div class="stats-grid">
-    <div><div class="stat-val">$22K+</div><div class="stat-label">Average annual recovery per practice</div></div>
-    <div><div class="stat-val">926</div><div class="stat-label">Billing codes analyzed per clinic</div></div>
-    <div><div class="stat-val">23%</div><div class="stat-label">Average price increase opportunity found</div></div>
-    <div><div class="stat-val">48hrs</div><div class="stat-label">From data to action plan</div></div>
-  </div>
-</section>
-
-<!-- Case Study -->
-<section class="casestudy fade-in" id="casestudy">
-  <div class="section-head">
-    <h2>Real results. Real clinics.</h2>
-  </div>
-  <div class="cs-card">
-    <div class="cs-name">Rosslyn Veterinary Clinic</div>
-    <div class="cs-stats">
-      <div><div class="cs-stat-val">$55,913</div><div class="cs-stat-label">Identified revenue opportunity</div></div>
-      <div><div class="cs-stat-val">13+ years</div><div class="cs-stat-label">Unchanged prices found</div></div>
-      <div><div class="cs-stat-val">926</div><div class="cs-stat-label">Billing codes analyzed</div></div>
-    </div>
-    <a href="#" class="btn-grad">Read the Case Study</a>
-  </div>
-</section>
-
-<!-- Pricing -->
-<section class="pricing fade-in" id="pricing">
-  <div class="section-head">
-    <h2>Simple, transparent pricing</h2>
-  </div>
-  <div class="price-grid">
-    <div class="price-card">
-      <h3>Starter</h3>
-      <div class="price-amount">Free</div>
-      <div class="price-period">Get started today</div>
-      <ul class="price-features">
-        <li>Revenue audit report</li>
-        <li>Pricing recommendations</li>
-        <li>Email support</li>
-      </ul>
-      <a href="#" class="btn-outline" style="display:block;text-align:center">Get Your Free Audit</a>
-    </div>
-    <div class="price-card featured">
-      <h3>Pro</h3>
-      <div class="price-amount">$299<span style="font-size:.9rem;font-weight:500;color:var(--text3)">/month</span></div>
-      <div class="price-period">Everything you need</div>
-      <ul class="price-features">
-        <li>Everything in Starter</li>
-        <li>AI Front Desk (24/7)</li>
-        <li>Practice analytics dashboard</li>
-        <li>Client retention automation</li>
-        <li>Priority support</li>
-      </ul>
-      <a href="#" class="btn-grad" style="display:block;text-align:center">Start Free Trial</a>
-    </div>
-    <div class="price-card">
-      <h3>Enterprise</h3>
-      <div class="price-amount">Custom</div>
-      <div class="price-period">For multi-location practices</div>
-      <ul class="price-features">
-        <li>Multi-location support</li>
-        <li>Custom integrations</li>
-        <li>Dedicated account manager</li>
-        <li>SLA guarantee</li>
-      </ul>
-      <a href="#" class="btn-outline" style="display:block;text-align:center">Contact Sales</a>
+    <div class="how-grid">
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h4>Analyze</h4>
+        <p>Every service code scanned against benchmarks, inflation data, and utilization patterns.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h4>Execute</h4>
+        <p>Targeted pricing changes — each timed and sized specifically for that individual service.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h4>Monitor</h4>
+        <p>Real-time revenue tracking after every change. Did it work? Did visits drop?</p>
+      </div>
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
+        <h4>Self-Correct</h4>
+        <p>If a price increase drives visits down, the system flags it and adjusts automatically.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq fade-in" id="faq">
-  <div class="section-head">
-    <h2>Frequently asked questions</h2>
+<!-- Four Strategies -->
+<section id="strategies" class="fade-in">
+  <div class="container">
+    <div class="section-head">
+      <h2>Four strategies. <span>One system.</span></h2>
+      <p>Proven pricing strategies applied systematically with AI behind them.</p>
+    </div>
+    <div class="strat-grid">
+      <div class="strat-card">
+        <div class="strat-header">
+          <div class="strat-num">1</div>
+          <span class="strat-amount">$47,521/yr</span>
+        </div>
+        <h3>Inflation Catch-Up</h3>
+        <p>Service codes that haven't been repriced in years are below market value. The AI scans every code, identifies which ones have fallen behind, and brings them up to where they should be.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-header">
+          <div class="strat-num">2</div>
+          <span class="strat-amount">$8,392/yr</span>
+        </div>
+        <h3>99 Cent Pricing</h3>
+        <p>Round prices to .99 or .95. The most basic retail technique — and most vet clinics haven't done it. Across thousands of transactions, one cent per service adds up to real money without a single client noticing.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-header">
+          <div class="strat-num">3</div>
+          <span class="strat-amount">Ongoing</span>
+        </div>
+        <h3>Margin Growth</h3>
+        <p>The AI doesn't raise everything at once. It selects the optimal time and amount for each individual service code based on utilization, seasonality, and client behavior. One code goes up 3% on a Tuesday, another waits until next quarter. The system monitors each change independently and self-corrects.</p>
+      </div>
+      <div class="strat-card">
+        <div class="strat-header">
+          <div class="strat-num">4</div>
+          <span class="strat-amount">Revenue growth</span>
+        </div>
+        <h3>Loss Leader Optimization</h3>
+        <p>Drop prices on high-visibility shoppable services — exams, neuters, vaccines — to drive more clients through the door. Capture margin on the procedures and follow-up services that follow.</p>
+      </div>
+    </div>
   </div>
-  <div class="faq-item">
-    <div class="faq-q">How does the free audit work? <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    <div class="faq-a">We connect to your practice management system, analyze your billing codes and pricing, and deliver a comprehensive report showing exactly where you're leaving money on the table. No commitment required.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">What PMS systems do you support? <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    <div class="faq-a">We integrate with Cornerstone, AVImark, Impromed, VetTrieve, and most major veterinary PMS platforms. If you're unsure, reach out — we likely support it or can build a custom integration.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">How long until I see results? <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    <div class="faq-a">Most practices receive their full audit within 48 hours. From there, you can start implementing pricing changes immediately. Most clients see measurable revenue impact within the first 30 days.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">Is my data secure? <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-    <div class="faq-a">Absolutely. We use industry-standard encryption for all data in transit and at rest. We never share your data with third parties, and you can request deletion at any time. We're fully compliant with veterinary data protection standards.</div>
+</section>
+
+<!-- Dashboard -->
+<section id="dashboard" class="fade-in">
+  <div class="container">
+    <div class="section-head">
+      <h2>The <span>Dashboard</span></h2>
+      <p>Real-time metrics. Campaign tracking. Trend analysis. Across all locations.</p>
+    </div>
+    <div class="dashboard-card">
+      <div class="dashboard-inner">
+        <img src="https://raw.githubusercontent.com/jack108510/vet-inc-onboarding-site-v2/main/assets/dashboard-preview.png" alt="Vet INC Dashboard" onerror="this.parentElement.innerHTML='<div style=\'padding:3rem;text-align:center;color:var(--text3)\'>Dashboard preview — contact us for a live demo</div>'">
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section fade-in" id="cta">
   <div class="cta-bg"></div>
-  <h2>Ready to find your hidden revenue?</h2>
-  <p>Get a free practice audit. No commitment. Results in 48 hours.</p>
-  <a href="#" class="btn-grad">Start Free Audit</a>
+  <h2>See it work on your clinic.</h2>
+  <p>Free pricing analysis on one of your locations. No commitment — just data.</p>
+  <a href="mailto:jack@vetinc.ca" class="btn-grad" style="font-size:1rem;padding:.8rem 2rem">Get Free Analysis</a>
+  <p style="margin-top:1.5rem;font-size:.9rem">
+    <a href="mailto:jack@vetinc.ca" style="color:var(--cyan);font-weight:600">jack@vetinc.ca</a>
+    <span style="color:var(--text3);margin:0 .5rem">|</span>
+    <span style="color:var(--text3)">780-904-3599</span>
+  </p>
 </section>
 
 <!-- Footer -->
 <footer>
-  <div class="footer-grid">
-    <div>
-      <div class="logo" style="margin-bottom:.5rem"><img src="assets/logo.png" alt="Vet INC" style="height:36px"></div>
-      <div class="footer-tagline">Smarter practices. Healthier bottom line.</div>
-    </div>
-    <div class="footer-col">
-      <h4>Product</h4>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#casestudy">Case Studies</a>
-      <a href="#">Blog</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="mailto:jack@wildroseautomations.ca">jack@wildroseautomations.ca</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>2026 Vet INC. All rights reserved.</span>
-    <div class="social-links">
-      <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-      <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-      <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
-    </div>
+  <div class="logo"><img src="assets/logo.png" alt="Vet INC" style="height:36px"></div>
+  <div class="footer-links">
+    <a href="mailto:jack@vetinc.ca">Contact</a>
+    <span>2026 Vet INC</span>
   </div>
 </footer>
 
@@ -424,11 +255,6 @@ window.addEventListener('scroll',()=>{
   const s=window.scrollY>50;
   nav.classList.toggle('scrolled',s);
   wrap.classList.toggle('scrolled',s);
-});
-
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
 });
 
 // Fade in on scroll
