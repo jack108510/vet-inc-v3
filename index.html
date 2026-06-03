@@ -3,23 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vet INC — Pricing Intelligence Platform</title>
+<title>Vet INC — Stop leaving money on the table</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#09090B;--surface:#18181B;--surface-hover:#27272A;--border:#27272A;--text:#FAFAFA;--text2:#A1A1AA;--text3:#71717A;--indigo:#2563eb;--violet:#3b82f6;--lviolet:#60a5fa;--cyan:#93c5fd;--emerald:#10B981;--grad:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa)}
+:root{--bg:#09090B;--surface:#18181B;--surface-hover:#27272A;--border:#27272A;--text:#FAFAFA;--text2:#A1A1AA;--text3:#71717A;--indigo:#2563eb;--violet:#3b82f6;--lviolet:#60a5fa;--cyan:#93c5fd;--grad:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa)}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 
 /* Navbar */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;transition:all .3s ease;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto}
-.navbar.scrolled{background:rgba(9,9,11,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;transition:all .3s;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto}
+.navbar.scrolled{background:rgba(9,9,11,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-wrap{position:fixed;top:0;left:0;right:0;z-index:99;transition:all .3s}
-.nav-wrap.scrolled{background:rgba(9,9,11,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.logo{font-weight:800;font-size:1.5rem;display:flex;align-items:center;gap:4px}
-.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
+.nav-wrap.scrolled{background:rgba(9,9,11,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{color:var(--text2);font-size:.9rem;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
@@ -27,22 +25,27 @@ a{color:inherit;text-decoration:none}
 .btn-grad:hover{opacity:.9;transform:translateY(-1px)}
 .btn-outline{background:transparent;color:var(--text);padding:.6rem 1.4rem;border-radius:8px;font-weight:600;font-size:.875rem;border:1px solid var(--border);cursor:pointer;transition:all .2s}
 .btn-outline:hover{border-color:var(--text3);background:var(--surface)}
+.mobile-toggle{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:.5rem}
+.mobile-toggle svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2}
 
 /* Hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.15),transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(139,92,246,.1),transparent 50%);animation:heroShift 8s ease-in-out infinite alternate}
 @keyframes heroShift{0%{opacity:.6;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
-.hero *{position:relative;z-index:1}
+.hero>*{position:relative;z-index:1}
 .badge{display:inline-block;padding:.4rem 1rem;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:.8rem;font-weight:500;margin-bottom:1.5rem}
 .badge span{color:var(--cyan);font-weight:600}
-.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.2rem;max-width:800px}
-.hero h1 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:clamp(.95rem,1.8vw,1.15rem);color:var(--text2);max-width:640px;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1rem;max-width:800px}
+.hero .subtitle{font-size:clamp(.95rem,1.8vw,1.15rem);color:var(--text2);max-width:600px;margin-bottom:2rem}
 
-/* Stat Hero */
-.hero-stat{font-size:clamp(3rem,8vw,5rem);font-weight:800;color:var(--emerald);margin:.5rem 0 .2rem}
-.hero-stat-label{font-size:1rem;color:var(--text2);margin-bottom:.2rem}
-.hero-stat-context{font-size:.85rem;color:var(--text3)}
+/* Dashboard Preview Card */
+.dashboard-card{position:relative;width:100%;max-width:750px;border-radius:16px;padding:2px;background:linear-gradient(135deg,var(--indigo),var(--violet),var(--cyan),var(--indigo));background-size:300% 300%;animation:borderGlow 4s ease infinite;margin:0 auto}
+@keyframes borderGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.dashboard-inner{background:var(--surface);border-radius:14px;overflow:hidden}
+.dash-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:0 2rem 1.5rem;text-align:center}
+.dash-header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem 1rem}
+.dash-bars{display:flex;align-items:flex-end;gap:6px;height:70px;padding:0 2rem 1.5rem}
+.dash-bars>div{flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7}
 
 /* Section */
 section{padding:6rem 2rem}
@@ -62,12 +65,6 @@ section{padding:6rem 2rem}
 .strat-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
 .strat-card p{color:var(--text2);font-size:.9rem;line-height:1.65}
 
-/* Dashboard Preview */
-.dashboard-card{position:relative;width:100%;max-width:750px;border-radius:16px;padding:2px;background:linear-gradient(135deg,var(--indigo),var(--violet),var(--cyan),var(--indigo));background-size:300% 300%;animation:borderGlow 4s ease infinite;margin:0 auto}
-@keyframes borderGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.dashboard-inner{background:var(--surface);border-radius:14px;overflow:hidden}
-.dashboard-inner img{width:100%;display:block}
-
 /* How Grid */
 .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1000px;margin:0 auto}
 .how-item{text-align:center;padding:1.5rem 1rem;background:rgba(24,24,27,.6);border:1px solid var(--border);border-radius:12px}
@@ -75,6 +72,9 @@ section{padding:6rem 2rem}
 .how-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .how-item h4{font-size:.95rem;font-weight:600;margin-bottom:.4rem}
 .how-item p{font-size:.8rem;color:var(--text2);line-height:1.5}
+
+/* Divider */
+.section-divider{width:60px;height:2px;background:var(--grad);margin:0 auto 1rem;border-radius:2px}
 
 /* CTA Section */
 .cta-section{padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
@@ -85,8 +85,8 @@ section{padding:6rem 2rem}
 
 /* Footer */
 footer{padding:3rem 2rem;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-footer .logo{font-size:1rem}
 .footer-links{display:flex;gap:2rem;font-size:.85rem;color:var(--text3)}
+.footer-links a{color:var(--text3);transition:color .2s}
 .footer-links a:hover{color:var(--text)}
 
 /* Fade in */
@@ -95,9 +95,12 @@ footer .logo{font-size:1rem}
 
 /* Mobile */
 @media(max-width:768px){
-.nav-links{display:none}
+.mobile-toggle{display:block}
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);flex-direction:column;padding:1rem 2rem;gap:1rem}
+.nav-links.open{display:flex}
 .strat-grid{grid-template-columns:1fr}
 .how-grid{grid-template-columns:1fr 1fr}
+.dash-row{grid-template-columns:1fr;gap:.5rem}
 }
 @media(max-width:480px){
 .how-grid{grid-template-columns:1fr}
@@ -109,12 +112,12 @@ footer .logo{font-size:1rem}
 <!-- Navbar -->
 <div class="nav-wrap" id="navWrap"></div>
 <nav class="navbar" id="navbar">
-  <div class="logo"><img src="assets/logo.png" alt="Vet INC" style="height:80px"></div>
-  <div class="nav-links">
-    <a href="#how">How It Works</a>
+  <div><img src="assets/logo.png" alt="Vet INC" style="height:70px"></div>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nav-links" id="navLinks">
     <a href="#strategies">Strategies</a>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#cta" class="btn-grad">Book a Demo</a>
+    <a href="#how">How It Works</a>
+    <a href="#cta" class="btn-grad">Get Free Analysis</a>
   </div>
 </nav>
 
@@ -123,77 +126,35 @@ footer .logo{font-size:1rem}
   <div class="hero-bg"></div>
   <div class="badge">AI-Powered <span>Pricing Intelligence</span></div>
   <h1>Stop leaving money on the table.</h1>
-  <p>We optimize your fee schedule to make you more money. Our AI-powered platform analyzes every service code, identifies exactly where you're undercharging, and makes targeted adjustments — then tracks whether they actually worked.</p>
-  <div class="hero-buttons" style="display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;justify-content:center">
+  <p class="subtitle">We optimize your fee schedule to make you more money. Our AI finds every dollar you're missing, makes targeted fixes, and proves they worked.</p>
+  <div style="display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;justify-content:center">
     <a href="#cta" class="btn-grad">Get Free Analysis</a>
     <a href="#strategies" class="btn-outline">See How It Works</a>
   </div>
   <div class="dashboard-card fade-in">
     <div class="dashboard-inner">
-      <div style="padding:1.5rem 2rem">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem">
-          <span style="font-weight:600;font-size:.9rem;color:var(--text2)">Rosslyn Veterinary Clinic</span>
-          <span style="font-size:.75rem;color:var(--cyan);font-weight:500">+23% opportunity found</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;text-align:center">
-          <div><div style="font-size:1.5rem;font-weight:700;color:var(--cyan)">$55,913</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Profit recovered in year one</div></div>
-          <div><div style="font-size:1.5rem;font-weight:700">926</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Service codes analyzed</div></div>
-          <div><div style="font-size:1.5rem;font-weight:700">4%</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Total revenue recovered</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-end;gap:6px;height:80px">
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:45%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:60%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:40%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:75%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:55%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:85%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:65%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:90%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:70%"></div>
-          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:95%"></div>
-        </div>
+      <div class="dash-header">
+        <span style="font-weight:600;font-size:.9rem;color:var(--text2)">Rosslyn Veterinary Clinic</span>
+        <span style="font-size:.75rem;color:var(--cyan);font-weight:500">Year one results</span>
+      </div>
+      <div class="dash-row">
+        <div><div style="font-size:1.5rem;font-weight:700;color:var(--cyan)">$55,913</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Profit recovered in year one</div></div>
+        <div><div style="font-size:1.5rem;font-weight:700">926</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Service codes analyzed</div></div>
+        <div><div style="font-size:1.5rem;font-weight:700">4%</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Total revenue recovered</div></div>
+      </div>
+      <div class="dash-bars">
+        <div style="height:45%"></div><div style="height:60%"></div><div style="height:40%"></div><div style="height:75%"></div><div style="height:55%"></div><div style="height:85%"></div><div style="height:65%"></div><div style="height:90%"></div><div style="height:70%"></div><div style="height:95%"></div>
       </div>
     </div>
   </div>
-  <p style="margin-top:1.5rem;font-size:.85rem;color:var(--text3)">Same patients. Same doctors. Same appointments. Just smarter pricing.</p>
-</section>
-
-<!-- How It Works -->
-<section id="how" class="fade-in">
-  <div class="container">
-    <div class="section-head">
-      <h2>How the <span>AI</span> works</h2>
-      <p>Four steps. Continuous improvement. Self-correcting.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h4>Analyze</h4>
-        <p>Every service code scanned against benchmarks, inflation data, and utilization patterns.</p>
-      </div>
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-        <h4>Execute</h4>
-        <p>Targeted pricing changes — each timed and sized specifically for that individual service.</p>
-      </div>
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <h4>Monitor</h4>
-        <p>Real-time revenue tracking after every change. Did it work? Did visits drop?</p>
-      </div>
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
-        <h4>Self-Correct</h4>
-        <p>If a price increase drives visits down, the system flags it and adjusts automatically.</p>
-      </div>
-    </div>
-  </div>
+  <p style="margin-top:1.2rem;font-size:.85rem;color:var(--text3)">Same patients. Same doctors. Same appointments. Just smarter pricing.</p>
 </section>
 
 <!-- Four Strategies -->
 <section id="strategies" class="fade-in">
   <div class="container">
     <div class="section-head">
+      <div class="section-divider"></div>
       <h2>Four strategies. <span>One system.</span></h2>
       <p>Proven pricing strategies applied systematically with AI behind them.</p>
     </div>
@@ -220,7 +181,7 @@ footer .logo{font-size:1rem}
           <span class="strat-amount">Ongoing</span>
         </div>
         <h3>Margin Growth</h3>
-        <p>The AI doesn't raise everything at once. It selects the optimal time and amount for each individual service code based on utilization, seasonality, and client behavior. One code goes up 3% on a Tuesday, another waits until next quarter. The system monitors each change independently and self-corrects.</p>
+        <p>The AI doesn't raise everything at once. It selects the optimal time and amount for each individual service code based on utilization, seasonality, and client behavior. One code goes up 3% on a Tuesday, another waits until next quarter. Each change is monitored independently and self-corrects.</p>
       </div>
       <div class="strat-card">
         <div class="strat-header">
@@ -234,16 +195,34 @@ footer .logo{font-size:1rem}
   </div>
 </section>
 
-<!-- Dashboard -->
-<section id="dashboard" class="fade-in">
+<!-- How It Works -->
+<section id="how" class="fade-in">
   <div class="container">
     <div class="section-head">
-      <h2>The <span>Dashboard</span></h2>
-      <p>Real-time metrics. Campaign tracking. Trend analysis. Across all locations.</p>
+      <div class="section-divider"></div>
+      <h2>How the <span>AI</span> works</h2>
+      <p>It doesn't just find opportunities. It executes, measures, and adjusts.</p>
     </div>
-    <div class="dashboard-card">
-      <div class="dashboard-inner">
-        <img src="https://raw.githubusercontent.com/jack108510/vet-inc-onboarding-site-v2/main/assets/dashboard-preview.png" alt="Vet INC Dashboard" onerror="this.parentElement.innerHTML='<div style=\'padding:3rem;text-align:center;color:var(--text3)\'>Dashboard preview — contact us for a live demo</div>'">
+    <div class="how-grid">
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h4>Analyze</h4>
+        <p>Every service code scanned against benchmarks, inflation data, and utilization patterns.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h4>Execute</h4>
+        <p>Targeted pricing changes — each timed and sized specifically for that individual service.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h4>Monitor</h4>
+        <p>Real-time revenue tracking after every change. Did it work? Did visits drop?</p>
+      </div>
+      <div class="how-item">
+        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
+        <h4>Self-Correct</h4>
+        <p>If a price increase drives visits down, the system flags it and adjusts automatically.</p>
       </div>
     </div>
   </div>
@@ -264,7 +243,7 @@ footer .logo{font-size:1rem}
 
 <!-- Footer -->
 <footer>
-  <div class="logo"><img src="assets/logo.png" alt="Vet INC" style="height:36px"></div>
+  <div><img src="assets/logo.png" alt="Vet INC" style="height:36px"></div>
   <div class="footer-links">
     <a href="mailto:jack@vetinc.ca">Contact</a>
     <span>2026 Vet INC</span>
@@ -272,16 +251,25 @@ footer .logo{font-size:1rem}
 </footer>
 
 <script>
-// Glass navbar on scroll
+// Glass navbar
 const nav=document.getElementById('navbar'),wrap=document.getElementById('navWrap');
 window.addEventListener('scroll',()=>{
-  const s=window.scrollY>50;
-  nav.classList.toggle('scrolled',s);
-  wrap.classList.toggle('scrolled',s);
+  nav.classList.toggle('scrolled',window.scrollY>50);
+  wrap.classList.toggle('scrolled',window.scrollY>50);
 });
 
-// Fade in on scroll
-const obs=new IntersectionObserver((entries)=>{
+// Mobile menu
+document.getElementById('mobileToggle').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+
+// Fade in
+const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
 },{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
