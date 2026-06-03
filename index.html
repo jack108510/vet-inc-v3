@@ -33,6 +33,8 @@ a{color:inherit;text-decoration:none}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.15),transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(139,92,246,.1),transparent 50%);animation:heroShift 8s ease-in-out infinite alternate}
 @keyframes heroShift{0%{opacity:.6;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
 .hero *{position:relative;z-index:1}
+.badge{display:inline-block;padding:.4rem 1rem;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:.8rem;font-weight:500;margin-bottom:1.5rem}
+.badge span{color:var(--cyan);font-weight:600}
 .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.2rem;max-width:800px}
 .hero h1 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{font-size:clamp(.95rem,1.8vw,1.15rem);color:var(--text2);max-width:640px;margin-bottom:1.5rem}
@@ -119,20 +121,41 @@ footer .logo{font-size:1rem}
 <!-- Hero -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <h1>Your clinic is leaving money on the table.<br><span>We built a system to take it back.</span></h1>
-  <p>Most vet owners are too busy to think about pricing. Years go by. Then they panic and raise everything 10% across the board. Clients get angry. Staff field complaints. They swear off price changes for another three years.</p>
-  <p style="color:var(--text);max-width:640px">We built an AI-powered platform that makes pricing gradual, precise, and data-driven. No panic increases. No angry clients. Just steady, measurable revenue growth.</p>
-  <div style="margin-top:1.5rem">
-    <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--text3);margin-bottom:.2rem">First year results on a single clinic</div>
-    <div class="hero-stat">$55,913</div>
-    <div class="hero-stat-label">profit recovered</div>
-    <div class="hero-stat-context">$1.39M revenue &middot; 926 service codes &middot; 4% revenue recovery</div>
-    <div class="hero-stat-context" style="color:var(--text2)">Same patients. Same doctors. Same appointments.</div>
-  </div>
-  <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;justify-content:center">
+  <div class="badge">AI-Powered <span>Pricing Intelligence</span></div>
+  <h1>Stop leaving money on the table.</h1>
+  <p>Most vet owners are too busy to think about pricing. Years go by, then they panic and raise everything 10%. We built a system that makes pricing gradual, precise, and data-driven — so you never have to do that again.</p>
+  <div class="hero-buttons" style="display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;justify-content:center">
     <a href="#cta" class="btn-grad">Get Free Analysis</a>
-    <a href="#strategies" class="btn-outline">See How</a>
+    <a href="#strategies" class="btn-outline">See How It Works</a>
   </div>
+  <div class="dashboard-card fade-in">
+    <div class="dashboard-inner">
+      <div style="padding:1.5rem 2rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem">
+          <span style="font-weight:600;font-size:.9rem;color:var(--text2)">Rosslyn Veterinary Clinic</span>
+          <span style="font-size:.75rem;color:var(--emerald);font-weight:500">+23% opportunity found</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;text-align:center">
+          <div><div style="font-size:1.5rem;font-weight:700;color:var(--emerald)">$55,913</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Annual profit recovered</div></div>
+          <div><div style="font-size:1.5rem;font-weight:700">926</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Codes analyzed</div></div>
+          <div><div style="font-size:1.5rem;font-weight:700">4%</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Revenue recovery</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:6px;height:80px">
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:45%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:60%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:40%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:75%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:55%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:85%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:65%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:90%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:70%"></div>
+          <div style="flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7;height:95%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem;font-size:.85rem;color:var(--text3)">Same patients. Same doctors. Same appointments. Just smarter pricing.</p>
 </section>
 
 <!-- How It Works -->
