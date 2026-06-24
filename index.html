@@ -1,278 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vet INC — Stop leaving money on the table</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="dark"/>
+<title>Vet INC — Stop Guessing. Start Optimizing.</title>
+<meta name="description" content="Vet INC is the pricing management tool for veterinary clinics. Connect your PMS, see every service code, and keep your fee schedule current — without the spreadsheets."/>
+<meta property="og:title" content="Vet INC — Stop Guessing. Start Optimizing."/>
+<meta property="og:description" content="Your fee schedule, updated on a schedule. No setup fee. No contract."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://vetinc.ca"/>
+<link rel="icon" type="image/png" href="logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#09090B;--surface:#18181B;--surface-hover:#27272A;--border:#27272A;--text:#FAFAFA;--text2:#A1A1AA;--text3:#71717A;--indigo:#2563eb;--violet:#3b82f6;--lviolet:#60a5fa;--cyan:#93c5fd;--grad:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa)}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Navbar */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;transition:all .3s;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto}
-.navbar.scrolled{background:rgba(9,9,11,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-wrap{position:fixed;top:0;left:0;right:0;z-index:99;transition:all .3s}
-.nav-wrap.scrolled{background:rgba(9,9,11,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{color:var(--text2);font-size:.9rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-.btn-grad{background:var(--grad);color:#fff;padding:.6rem 1.4rem;border-radius:8px;font-weight:600;font-size:.875rem;border:none;cursor:pointer;transition:opacity .2s,transform .2s;display:inline-block}
-.btn-grad:hover{opacity:.9;transform:translateY(-1px)}
-.btn-outline{background:transparent;color:var(--text);padding:.6rem 1.4rem;border-radius:8px;font-weight:600;font-size:.875rem;border:1px solid var(--border);cursor:pointer;transition:all .2s}
-.btn-outline:hover{border-color:var(--text3);background:var(--surface)}
-.mobile-toggle{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:.5rem}
-.mobile-toggle svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2}
-
-/* Hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.15),transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(139,92,246,.1),transparent 50%);animation:heroShift 8s ease-in-out infinite alternate}
-@keyframes heroShift{0%{opacity:.6;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
-.hero>*{position:relative;z-index:1}
-.badge{display:inline-block;padding:.4rem 1rem;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:.8rem;font-weight:500;margin-bottom:1.5rem}
-.badge span{color:var(--cyan);font-weight:600}
-.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1rem;max-width:800px}
-.hero .subtitle{font-size:clamp(.95rem,1.8vw,1.15rem);color:var(--text2);max-width:600px;margin-bottom:2rem}
-
-/* Dashboard Preview Card */
-.dashboard-card{position:relative;width:100%;max-width:750px;border-radius:16px;padding:2px;background:linear-gradient(135deg,var(--indigo),var(--violet),var(--cyan),var(--indigo));background-size:300% 300%;animation:borderGlow 4s ease infinite;margin:0 auto}
-@keyframes borderGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.dashboard-inner{background:var(--surface);border-radius:14px;overflow:hidden}
-.dash-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:0 2rem 1.5rem;text-align:center}
-.dash-header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem 1rem}
-.dash-bars{display:flex;align-items:flex-end;gap:6px;height:70px;padding:0 2rem 1.5rem}
-.dash-bars>div{flex:1;border-radius:4px 4px 0 0;background:var(--grad);opacity:.7}
-
-/* Section */
-section{padding:6rem 2rem}
-.container{max-width:1100px;margin:0 auto}
-.section-head{text-align:center;margin-bottom:3rem}
-.section-head h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.75rem}
-.section-head p{color:var(--text2);font-size:1.05rem;max-width:600px;margin:0 auto}
-.section-head h2 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-/* Strategy Cards */
-.strat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1000px;margin:0 auto}
-.strat-card{background:rgba(24,24,27,.6);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all .3s}
-.strat-card:hover{border-color:rgba(99,102,241,.3);box-shadow:0 0 30px rgba(99,102,241,.08)}
-.strat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
-.strat-num{width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
-.strat-amount{font-size:1rem;font-weight:700;color:var(--cyan)}
-.strat-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
-.strat-card p{color:var(--text2);font-size:.9rem;line-height:1.65}
-
-/* How Grid */
-.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;max-width:1000px;margin:0 auto}
-.how-item{text-align:center;padding:1.5rem 1rem;background:rgba(24,24,27,.6);border:1px solid var(--border);border-radius:12px}
-.how-icon{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto .75rem}
-.how-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.how-item h4{font-size:.95rem;font-weight:600;margin-bottom:.4rem}
-.how-item p{font-size:.8rem;color:var(--text2);line-height:1.5}
-
-/* Divider */
-.section-divider{width:60px;height:2px;background:var(--grad);margin:0 auto 1rem;border-radius:2px}
-
-/* CTA Section */
-.cta-section{padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(99,102,241,.12),transparent 70%)}
-.cta-section>*{position:relative}
-.cta-section h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;margin-bottom:.75rem}
-.cta-section p{color:var(--text2);margin-bottom:2rem;font-size:1.05rem}
-
-/* Footer */
-footer{padding:3rem 2rem;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-links{display:flex;gap:2rem;font-size:.85rem;color:var(--text3)}
-.footer-links a{color:var(--text3);transition:color .2s}
-.footer-links a:hover{color:var(--text)}
-
-/* Fade in */
-.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-
-/* Mobile */
-@media(max-width:768px){
-.mobile-toggle{display:block}
-.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);flex-direction:column;padding:1rem 2rem;gap:1rem}
-.nav-links.open{display:flex}
-.strat-grid{grid-template-columns:1fr}
-.how-grid{grid-template-columns:1fr 1fr}
-.dash-row{grid-template-columns:1fr;gap:.5rem}
+:root {
+  --bg:     #080e1a;
+  --bg2:    #0d1526;
+  --bg3:    #111b30;
+  --line:   rgba(255,255,255,.07);
+  --line2:  rgba(255,255,255,.12);
+  --blue:   #3b82f6;
+  --blue2:  #2563eb;
+  --blue3:  #1d4ed8;
+  --green:  #22c55e;
+  --text:   #ffffff;
+  --dim:    rgba(255,255,255,.55);
+  --dimmer: rgba(255,255,255,.3);
+  --faint:  rgba(255,255,255,.06);
 }
-@media(max-width:480px){
-.how-grid{grid-template-columns:1fr}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+  height: 72px; padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(8,14,26,.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
 }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { height: 36px; width: auto; display: block; }
+.logo-text { font-size: 1rem; font-weight: 800; color: #fff; letter-spacing: -.3px; }
+.nav-r { display: flex; align-items: center; gap: 6px; }
+.nav-r a { font-size: .82rem; font-weight: 500; color: var(--dim); text-decoration: none; padding: 7px 14px; border-radius: 6px; transition: color .15s, background .15s; }
+.nav-r a:hover { color: var(--text); background: var(--faint); }
+.nav-cta { background: var(--blue2) !important; color: #fff !important; font-weight: 700 !important; border-radius: 7px !important; padding: 8px 18px !important; transition: background .15s, transform .15s !important; }
+.nav-cta:hover { background: var(--blue) !important; transform: translateY(-1px); }
+@media (max-width: 640px) { nav { padding: 0 20px; } .nav-r a:not(.nav-cta) { display: none; } }
+
+/* ── HERO ── */
+.hero-shell { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero-shell::before {
+  content: ''; position: absolute; top: -20%; left: 20%; width: 800px; height: 700px;
+  background: radial-gradient(ellipse, rgba(37,99,235,.22) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-shell::after {
+  content: ''; position: absolute; bottom: -40%; right: -10%; width: 600px; height: 500px;
+  background: radial-gradient(ellipse, rgba(59,130,246,.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero {
+  padding: 120px 48px 80px;
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 440px; gap: 64px; align-items: center;
+  position: relative;
+}
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding: 100px 24px 64px; gap: 48px; } }
+
+.hero-tag { font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+.hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 12px var(--blue); }
+.hero-h { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.05; letter-spacing: -1.8px; margin-bottom: 22px; }
+.hero-h span { color: var(--blue); }
+.hero-p { font-size: 1rem; color: var(--dim); line-height: 1.75; margin-bottom: 32px; max-width: 440px; }
+.hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.btn { display: inline-flex; align-items: center; padding: 13px 26px; border-radius: 9px; font-size: .88rem; font-weight: 700; text-decoration: none; font-family: inherit; cursor: pointer; border: none; transition: all .2s; }
+.btn-p { background: var(--blue2); color: #fff; box-shadow: 0 4px 24px rgba(37,99,235,.3); }
+.btn-p:hover { background: var(--blue); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(59,130,246,.4); }
+.btn-s { background: var(--faint); color: var(--dim); border: 1px solid var(--line2); }
+.btn-s:hover { color: var(--text); background: rgba(255,255,255,.08); }
+.hero-fine { display: flex; gap: 24px; flex-wrap: wrap; }
+.hero-fine span { font-size: .72rem; color: var(--dimmer); display: flex; align-items: center; gap: 6px; }
+.hero-fine span::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+/* ── HERO CARD ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--line2);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(59,130,246,.08), 0 40px 100px rgba(0,0,0,.6);
+}
+.card-head {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ch-title { font-size: .75rem; font-weight: 600; color: var(--dimmer); }
+.ch-tag { font-size: .62rem; font-weight: 700; padding: 3px 10px; border-radius: 5px; background: rgba(59,130,246,.12); color: var(--blue); border: 1px solid rgba(59,130,246,.2); }
+.card-row {
+  display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center;
+  padding: 12px 18px; border-bottom: 1px solid var(--line);
+}
+.card-row:last-of-type { border: none; }
+.cr-name { font-size: .78rem; color: rgba(255,255,255,.65); font-weight: 500; }
+.cr-old { font-size: .74rem; color: var(--dimmer); text-decoration: line-through; }
+.cr-new { font-size: .78rem; font-weight: 700; color: var(--blue); }
+.cr-new.flat { color: var(--dimmer); font-weight: 400; }
+.card-foot {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,.02);
+}
+.cf { padding: 14px 10px; text-align: center; }
+.cf-n { font-size: 1rem; font-weight: 900; color: var(--text); letter-spacing: -.5px; }
+.cf-n.b { color: var(--blue); }
+.cf-l { font-size: .56rem; color: var(--dimmer); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+
+/* ── DIVIDER ── */
+.divider { border: none; border-top: 1px solid var(--line); }
+
+/* ── SECTIONS ── */
+.sec { padding: 96px 48px; max-width: 1120px; margin: 0 auto; }
+@media (max-width: 700px) { .sec { padding: 72px 24px; } }
+
+.sec-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 14px; }
+.sec-h { font-size: clamp(1.7rem, 3.8vw, 2.5rem); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+.sec-h span { color: var(--blue); }
+.sec-p { font-size: .94rem; color: var(--dim); line-height: 1.75; max-width: 500px; }
+
+/* ── PROBLEM COLS ── */
+.cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 48px; }
+@media (max-width: 700px) { .cols { grid-template-columns: 1fr; } }
+.col { padding: 32px 28px; background: var(--bg2); }
+.col-n { font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--dimmer); display: block; margin-bottom: 12px; }
+.col-title { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+.col-desc { font-size: .82rem; color: var(--dim); line-height: 1.65; }
+
+/* ── STRATEGY GRID ── */
+.strategies { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 48px; }
+@media (max-width: 700px) { .strategies { grid-template-columns: 1fr; } }
+.strategy {
+  background: var(--bg2); border: 1px solid var(--line); border-radius: 12px;
+  padding: 28px 26px; transition: border-color .2s, transform .2s;
+}
+.strategy:hover { border-color: rgba(59,130,246,.3); transform: translateY(-2px); }
+.strategy-icon { font-size: 1.4rem; margin-bottom: 14px; display: block; }
+.strategy-title { font-size: .94rem; font-weight: 800; margin-bottom: 8px; }
+.strategy-desc { font-size: .82rem; color: var(--dim); line-height: 1.65; }
+
+/* ── STEPS ── */
+.steps { display: flex; flex-direction: column; margin-top: 48px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.step { display: grid; grid-template-columns: 56px 1fr; background: var(--bg2); border-bottom: 1px solid var(--line); }
+.step:last-child { border: none; }
+.step-n { padding: 28px 0 28px 26px; font-size: 1.3rem; font-weight: 900; color: var(--line2); letter-spacing: -1px; }
+.step-b { padding: 28px 28px 28px 0; }
+.step-title { font-size: .92rem; font-weight: 800; margin-bottom: 6px; }
+.step-desc { font-size: .82rem; color: var(--dim); line-height: 1.65; }
+
+/* ── PROOF / CASE STUDY ── */
+.proof-band { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.proof { padding: 80px 48px; max-width: 1120px; margin: 0 auto; text-align: center; }
+@media (max-width: 700px) { .proof { padding: 64px 24px; } }
+.proof-h { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 900; letter-spacing: -.8px; margin-bottom: 16px; }
+.proof-sub { font-size: .9rem; color: var(--dim); margin-bottom: 48px; }
+.proof-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; max-width: 800px; margin: 0 auto; }
+@media (max-width: 700px) { .proof-stats { grid-template-columns: repeat(2,1fr); } }
+.ps { background: var(--bg3); padding: 28px 16px; }
+.ps-n { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--blue); letter-spacing: -1px; }
+.ps-l { font-size: .68rem; color: var(--dim); margin-top: 6px; text-transform: uppercase; letter-spacing: .04em; }
+.proof-note { font-size: .76rem; color: var(--dimmer); margin-top: 24px; }
+
+/* ── PRICING ── */
+.pricing-wrap { border-top: 1px solid var(--line); }
+.pricing { padding: 96px 48px; max-width: 600px; margin: 0 auto; text-align: center; }
+@media (max-width: 700px) { .pricing { padding: 72px 24px; } }
+.price-card {
+  background: var(--bg2); border: 1px solid var(--line2); border-radius: 16px;
+  padding: 48px 40px; margin-top: 40px;
+  box-shadow: 0 0 0 1px rgba(59,130,246,.08), 0 24px 60px rgba(0,0,0,.4);
+}
+.price-amt { font-size: 3.2rem; font-weight: 900; color: var(--text); letter-spacing: -2px; }
+.price-amt span { font-size: 1.1rem; font-weight: 600; color: var(--dim); }
+.price-per { font-size: .82rem; color: var(--dim); margin-bottom: 28px; }
+.price-features { list-style: none; text-align: left; margin-bottom: 32px; }
+.price-features li { font-size: .86rem; color: var(--dim); padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; align-items: flex-start; gap: 10px; }
+.price-features li:last-child { border: none; }
+.price-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.price-cta { width: 100%; justify-content: center; }
+
+/* ── BOTTOM CTA ── */
+.cta-wrap { border-top: 1px solid var(--line); padding: 96px 48px; text-align: center; position: relative; overflow: hidden; }
+.cta-wrap::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(37,99,235,.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+@media (max-width: 700px) { .cta-wrap { padding: 72px 24px; } }
+.cta-inner { max-width: 480px; margin: 0 auto; position: relative; }
+.cta-h { font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 900; letter-spacing: -1.2px; line-height: 1.08; margin-bottom: 16px; }
+.cta-h span { color: var(--blue); }
+.cta-p { font-size: .92rem; color: var(--dim); line-height: 1.7; margin-bottom: 28px; }
+.cta-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.cta-in { flex: 1; min-width: 180px; max-width: 220px; background: var(--faint); border: 1px solid var(--line2); color: var(--text); font-family: inherit; font-size: .86rem; padding: 12px 16px; border-radius: 8px; outline: none; transition: border .2s; }
+.cta-in::placeholder { color: var(--dimmer); }
+.cta-in:focus { border-color: rgba(59,130,246,.4); }
+.cta-fine { font-size: .66rem; color: var(--dimmer); margin-top: 14px; }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--line); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 640px) { footer { flex-direction: column; padding: 28px 24px; text-align: center; } }
+.f-left { display: flex; align-items: center; gap: 12px; }
+.f-logo img { height: 22px; width: auto; filter: brightness(0) invert(1); opacity: .4; }
+.f-copy { font-size: .7rem; color: var(--dimmer); }
+.f-links { display: flex; gap: 18px; }
+.f-links a { font-size: .7rem; color: var(--dimmer); text-decoration: none; transition: color .15s; }
+.f-links a:hover { color: var(--text); }
+
+/* ── REVEAL ── */
+.r { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+.r.on { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<div class="nav-wrap" id="navWrap"></div>
-<nav class="navbar" id="navbar">
-  <div><img src="assets/logo.png" alt="Vet INC" style="height:70px"></div>
-  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-  <div class="nav-links" id="navLinks">
-    <a href="#strategies">Strategies</a>
-    <a href="#how">How It Works</a>
-    <a href="#cta" class="btn-grad">Get Free Analysis</a>
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <img src="logo.png" alt="Vet INC" onerror="this.style.display='none'"/>
+    <span class="logo-text">Vet INC</span>
+  </a>
+  <div class="nav-r">
+    <a href="#problem">Problem</a>
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#proof">Results</a>
+    <a href="#pricing">Pricing</a>
+    <a href="mailto:jack@vetinc.ca" class="nav-cta">Book free analysis</a>
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="badge">AI-Powered <span>Pricing Intelligence</span></div>
-  <h1>Stop leaving money on the table.</h1>
-  <p class="subtitle">We optimize your fee schedule to make you more money. Our AI analyzes every service code, identifies where you're undercharging, and makes targeted adjustments — then tracks whether they actually worked.</p>
-  <div style="display:flex;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;justify-content:center">
-    <a href="#cta" class="btn-grad">Get Free Analysis</a>
-    <a href="#strategies" class="btn-outline">See How It Works</a>
-  </div>
-  <div class="dashboard-card fade-in">
-    <div class="dashboard-inner">
-      <div class="dash-header">
-        <span style="font-weight:600;font-size:.9rem;color:var(--text2)">Rosslyn Veterinary Clinic</span>
-        <span style="font-size:.75rem;color:var(--cyan);font-weight:500">Case study results</span>
+<!-- HERO -->
+<div class="hero-shell">
+  <div class="hero">
+    <div class="r">
+      <span class="hero-tag">Pricing management for vet clinics</span>
+      <h1 class="hero-h">Your fee schedule,<br><span>under control.</span></h1>
+      <p class="hero-p">Vet INC is the tool veterinary clinics use to manage their pricing. Connect your PMS, see every service code in one place, and keep your fee schedule current — without the spreadsheets and guesswork.</p>
+      <div class="hero-btns">
+        <a href="mailto:jack@vetinc.ca?subject=Free%20fee%20schedule%20analysis" class="btn btn-p">Book a free analysis</a>
+        <a href="#how" class="btn btn-s">How it works</a>
       </div>
-      <div class="dash-row">
-        <div><div style="font-size:1.5rem;font-weight:700;color:var(--cyan)">$55,913</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Profit recovered in year one</div></div>
-        <div><div style="font-size:1.5rem;font-weight:700">926</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Service codes analyzed</div></div>
-        <div><div style="font-size:1.5rem;font-weight:700">4%</div><div style="font-size:.7rem;color:var(--text3);margin-top:2px">Total revenue recovered</div></div>
-      </div>
-      <div class="dash-bars">
-        <div style="height:45%"></div><div style="height:60%"></div><div style="height:40%"></div><div style="height:75%"></div><div style="height:55%"></div><div style="height:85%"></div><div style="height:65%"></div><div style="height:90%"></div><div style="height:70%"></div><div style="height:95%"></div>
+      <div class="hero-fine">
+        <span>No setup fee</span>
+        <span>AVImark &amp; Cornerstone</span>
+        <span>Cancel anytime</span>
       </div>
     </div>
-  </div>
-  <p style="margin-top:1.2rem;font-size:.85rem;color:var(--text3)">Same patients. Same doctors. Same appointments. Just smarter pricing.</p>
-</section>
-
-<!-- Four Strategies -->
-<section id="strategies" class="fade-in">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-divider"></div>
-      <h2>Four strategies. <span>One system.</span></h2>
-      <p>Proven pricing strategies backed by real case study data.</p>
-    </div>
-    <div class="strat-grid">
-      <div class="strat-card">
-        <div class="strat-header">
-          <div class="strat-num">1</div>
-          <span class="strat-amount">$47,521/yr</span>
+    <div class="r">
+      <div class="card">
+        <div class="card-head">
+          <span class="ch-title">Scheduled Review — June 2026</span>
+          <span class="ch-tag">14 flagged</span>
         </div>
-        <h3>Inflation Catch-Up</h3>
-        <p>Service codes that haven't been repriced in years are below market value. The AI scans every code, identifies which ones have fallen behind, and brings them up to where they should be.</p>
-      </div>
-      <div class="strat-card">
-        <div class="strat-header">
-          <div class="strat-num">2</div>
-          <span class="strat-amount">$8,392/yr</span>
+        <div class="card-row"><span class="cr-name">Annual Wellness Exam</span><span class="cr-old">$68</span><span class="cr-new">$79</span></div>
+        <div class="card-row"><span class="cr-name">Dental Cleaning — Cat</span><span class="cr-old">$210</span><span class="cr-new">$235</span></div>
+        <div class="card-row"><span class="cr-name">CBC Panel</span><span class="cr-old">$55</span><span class="cr-new flat">$55 — OK</span></div>
+        <div class="card-row"><span class="cr-name">Spay — Small Dog</span><span class="cr-old">$290</span><span class="cr-new">$320</span></div>
+        <div class="card-row"><span class="cr-name">X-Ray (2 views)</span><span class="cr-old">$85</span><span class="cr-new">$98</span></div>
+        <div class="card-foot">
+          <div class="cf"><div class="cf-n">14</div><div class="cf-l">Flagged</div></div>
+          <div class="cf"><div class="cf-n b">+$680</div><div class="cf-l">Est. monthly</div></div>
+          <div class="cf"><div class="cf-n">1,386</div><div class="cf-l">Monitored</div></div>
         </div>
-        <h3>99 Cent Pricing</h3>
-        <p>Round prices to .99 or .95. The most basic retail technique — and most vet clinics haven't done it. Across thousands of transactions, one cent per service adds up to real money without a single client noticing.</p>
-      </div>
-      <div class="strat-card">
-        <div class="strat-header">
-          <div class="strat-num">3</div>
-          <span class="strat-amount">Ongoing</span>
-        </div>
-        <h3>Margin Growth</h3>
-        <p>The AI doesn't raise everything at once. It selects the optimal time and amount for each individual service code based on utilization, seasonality, and client behavior. One code goes up 3% on a Tuesday, another waits until next quarter. Each change is monitored independently and self-corrects.</p>
-      </div>
-      <div class="strat-card">
-        <div class="strat-header">
-          <div class="strat-num">4</div>
-          <span class="strat-amount">Revenue growth</span>
-        </div>
-        <h3>Loss Leader Optimization</h3>
-        <p>Drop prices on high-visibility shoppable services — exams, neuters, vaccines — to drive more clients through the door. Capture margin on the procedures and follow-up services that follow.</p>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- How It Works -->
-<section id="how" class="fade-in">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-divider"></div>
-      <h2>How the <span>AI</span> works</h2>
-      <p>Our case study found $55,913 in recoverable profit on a single clinic. In year one, 4% of total revenue — from pricing alone. Same patients. Same doctors. Same appointments.</p>
+<!-- PROBLEM -->
+<div class="sec r" id="problem">
+  <span class="sec-label">The problem</span>
+  <h2 class="sec-h">Most fee schedules haven't been touched in <span>years.</span></h2>
+  <p class="sec-p">Costs go up. Prices don't. The gap compounds quietly. There's no alert when a service code goes stale — you only notice it when you actually look, and most clinics never do. So they panic and raise everything 10% at once.</p>
+  <div class="cols">
+    <div class="col r">
+      <span class="col-n">Average</span>
+      <div class="col-title">847 days stale</div>
+      <p class="col-desc">How long since most clinics last reviewed their wellness exam price. Nearly two and a half years.</p>
     </div>
-    <div class="how-grid">
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h4>Analyze</h4>
-        <p>Every service code scanned against benchmarks, inflation data, and utilization patterns.</p>
+    <div class="col r">
+      <span class="col-n">Reality</span>
+      <div class="col-title">60% underpriced</div>
+      <p class="col-desc">Of service codes are priced below what the clinic's own costs justify. Quietly bleeding margin.</p>
+    </div>
+    <div class="col r">
+      <span class="col-n">Cost</span>
+      <div class="col-title">3–5% per year</div>
+      <p class="col-desc">Revenue lost to pricing that never kept pace. That's $40K–$70K/year on a $1.4M clinic.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- FEATURES -->
+<div class="sec r" id="features">
+  <span class="sec-label">What you get</span>
+  <h2 class="sec-h">Everything you need to manage <span>clinic pricing.</span></h2>
+  <p class="sec-p">No more digging through AVImark reports or building spreadsheets. Vet INC puts your entire fee schedule in one dashboard — with the tools to act on it.</p>
+  <div class="strategies">
+    <div class="strategy r">
+      <span class="strategy-icon">📋</span>
+      <div class="strategy-title">Full fee schedule dashboard</div>
+      <p class="strategy-desc">Every service code in one place — current prices, utilization, revenue impact. Search, filter, sort. See what's driving your revenue and what's drifting.</p>
+    </div>
+    <div class="strategy r">
+      <span class="strategy-icon">🔍</span>
+      <div class="strategy-title">Drift detection</div>
+      <p class="strategy-desc">We scan every code against inflation data and utilization patterns, then flag the ones that have fallen behind. You always know what needs attention.</p>
+    </div>
+    <div class="strategy r">
+      <span class="strategy-icon">✏️</span>
+      <div class="strategy-title">Make changes in seconds</div>
+      <p class="strategy-desc">Review flagged items, approve new prices, and update your fee schedule — all in the dashboard. No more re-pricing in spreadsheets and hoping you didn't miss anything.</p>
+    </div>
+    <div class="strategy r">
+      <span class="strategy-icon">📊</span>
+      <div class="strategy-title">Revenue tracking</div>
+      <p class="strategy-desc">See the impact of every change. Monthly reports show what moved, what it's worth, and where you still have room. Numbers you can take to the partners.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="sec r" id="how">
+  <span class="sec-label">How it works</span>
+  <h2 class="sec-h">Connect once. We run <span>on your schedule.</span></h2>
+  <p class="sec-p">Set your review cadence. Every cycle, every code gets scanned. Nothing falls behind unnoticed.</p>
+  <div class="steps">
+    <div class="step r">
+      <div class="step-n">01</div>
+      <div class="step-b">
+        <div class="step-title">Connect your clinic</div>
+        <p class="step-desc">Upload your fee schedule from AVImark, Cornerstone, EzyVet, or any major PMS. Takes under five minutes.</p>
       </div>
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-        <h4>Execute</h4>
-        <p>Targeted pricing changes — each timed and sized specifically for that individual service.</p>
+    </div>
+    <div class="step r">
+      <div class="step-n">02</div>
+      <div class="step-b">
+        <div class="step-title">Reviews run automatically</div>
+        <p class="step-desc">Weekly, monthly, or quarterly — Vet INC scans every service code and flags what's drifted, with context on why and a recommended fix.</p>
       </div>
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <h4>Monitor</h4>
-        <p>Real-time revenue tracking after every change. Did it work? Did visits drop?</p>
-      </div>
-      <div class="how-item">
-        <div class="how-icon"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div>
-        <h4>Self-Correct</h4>
-        <p>If a price increase drives visits down, the system flags it and adjusts automatically.</p>
+    </div>
+    <div class="step r">
+      <div class="step-n">03</div>
+      <div class="step-b">
+        <div class="step-title">Approve and stay current</div>
+        <p class="step-desc">Review the flagged items, approve what looks right, and your fee schedule stays sharp. No spreadsheets. No consultants. No panic.</p>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- CTA -->
-<section class="cta-section fade-in" id="cta">
-  <div class="cta-bg"></div>
-  <h2>See what we'd find on your clinic.</h2>
-  <p>Free pricing analysis on one of your locations. No commitment — just data.</p>
-  <a href="mailto:jack@vetinc.ca" class="btn-grad" style="font-size:1rem;padding:.8rem 2rem">Get Free Analysis</a>
-  <p style="margin-top:1.5rem;font-size:.9rem">
-    <a href="mailto:jack@vetinc.ca" style="color:var(--cyan);font-weight:600">jack@vetinc.ca</a>
-    <span style="color:var(--text3);margin:0 .5rem">|</span>
-    <span style="color:var(--text3)">780-904-3599</span>
-  </p>
-</section>
+<!-- PROOF -->
+<div class="proof-band r">
+  <div class="proof" id="proof">
+    <h2 class="proof-h">One clinic. Real numbers.</h2>
+    <p class="proof-sub">Same patients. Same doctors. Same appointments. Just smarter pricing.</p>
+    <div class="proof-stats">
+      <div class="ps"><div class="ps-n">$55,913</div><div class="ps-l">Profit recovered</div></div>
+      <div class="ps"><div class="ps-n">$1.39M</div><div class="ps-l">Annual revenue</div></div>
+      <div class="ps"><div class="ps-n">926</div><div class="ps-l">Codes analyzed</div></div>
+      <div class="ps"><div class="ps-n">4%</div><div class="ps-l">Revenue recovery</div></div>
+    </div>
+    <p class="proof-note">Results from a real clinic in year one of continuous optimization.</p>
+  </div>
+</div>
 
-<!-- Footer -->
+<!-- PRICING -->
+<div class="pricing-wrap r">
+  <div class="pricing" id="pricing">
+    <span class="sec-label">Simple pricing</span>
+    <h2 class="sec-h">One price. Everything <span>included.</span></h2>
+    <p class="sec-p">Per location. No contracts, no hidden fees, no setup cost.</p>
+    <div class="price-card">
+      <div class="price-amt">$499<span>/mo</span></div>
+      <div class="price-per">per location — cancel anytime</div>
+      <ul class="price-features">
+        <li>Full fee schedule dashboard</li>
+        <li>Automatic drift detection on every code</li>
+        <li>Scheduled reviews (weekly, monthly, or quarterly)</li>
+        <li>One-click price updates</li>
+        <li>Monthly performance reports</li>
+        <li>AVImark &amp; Cornerstone support</li>
+        <li>No contract — cancel anytime</li>
+      </ul>
+      <a href="mailto:jack@vetinc.ca?subject=Free%20fee%20schedule%20analysis" class="btn btn-p price-cta">Book a free analysis</a>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="cta-wrap r">
+  <div class="cta-inner">
+    <h2 class="cta-h">Your fee schedule,<br><span>never behind.</span></h2>
+    <p class="cta-p">We'll run the numbers on your clinic and show you exactly what we'd change — before you pay a cent.</p>
+    <div class="cta-row">
+      <a href="mailto:jack@vetinc.ca?subject=Free%20fee%20schedule%20analysis" class="btn btn-p">Book a free analysis</a>
+    </div>
+    <p class="cta-fine">No credit card &nbsp;·&nbsp; AVImark &amp; Cornerstone &nbsp;·&nbsp; jack@vetinc.ca &nbsp;·&nbsp; 780-904-3599</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <div><img src="assets/logo.png" alt="Vet INC" style="height:36px"></div>
-  <div class="footer-links">
+  <div class="f-left">
+    <div class="f-logo"><img src="logo.png" alt="Vet INC"/></div>
+    <span class="f-copy">© 2026 Vet INC</span>
+  </div>
+  <div class="f-links">
     <a href="mailto:jack@vetinc.ca">Contact</a>
-    <span>2026 Vet INC</span>
+    <a href="tel:7809043599">780-904-3599</a>
   </div>
 </footer>
 
 <script>
-// Glass navbar
-const nav=document.getElementById('navbar'),wrap=document.getElementById('navWrap');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>50);
-  wrap.classList.toggle('scrolled',window.scrollY>50);
-});
+// Scroll reveal
+const io = new IntersectionObserver(e => e.forEach(x => {
+  if (x.isIntersecting) { x.target.classList.add('on'); io.unobserve(x.target); }
+}), { threshold: .07 });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
 
-// Mobile menu
-document.getElementById('mobileToggle').addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
-// Close mobile menu on link click
-document.querySelectorAll('.nav-links a').forEach(a=>{
-  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
-});
-
-// Fade in
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
-},{threshold:0.1});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+}));
 </script>
 </body>
 </html>
