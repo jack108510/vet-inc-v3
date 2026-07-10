@@ -226,6 +226,27 @@ footer { border-top: 1px solid var(--line); padding: 28px 48px; display: flex; a
 .f-links a { font-size: .7rem; color: var(--dimmer); text-decoration: none; transition: color .15s; }
 .f-links a:hover { color: var(--text); }
 
+/* ── CAREERS ── */
+.careers-wrap { border-top: 1px solid var(--line); }
+.careers-sec { padding: 96px 48px; max-width: 760px; margin: 0 auto; text-align: center; }
+@media (max-width: 700px) { .careers-sec { padding: 72px 24px; } }
+.careers-meta { font-size: .78rem; color: var(--dimmer); margin-bottom: 20px; letter-spacing: .02em; }
+.careers-desc { max-width: 620px; margin-left: auto; margin-right: auto; }
+.careers-card {
+  background: var(--bg2); border: 1px solid var(--line2); border-radius: 16px;
+  padding: 40px 36px; margin-top: 36px; text-align: left;
+  box-shadow: 0 0 0 1px rgba(59,130,246,.08), 0 24px 60px rgba(0,0,0,.4);
+}
+@media (max-width: 560px) { .careers-card { padding: 28px 20px; } }
+.careers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; margin-bottom: 36px; }
+@media (max-width: 560px) { .careers-grid { grid-template-columns: 1fr; } }
+.careers-sub { font-size: .66rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dimmer); margin-bottom: 14px; display: block; }
+.careers-items { list-style: none; }
+.careers-items li { font-size: .84rem; color: var(--dim); padding: 9px 0; border-bottom: 1px solid var(--line); display: flex; align-items: flex-start; gap: 10px; line-height: 1.6; }
+.careers-items li:last-child { border: none; }
+.careers-items li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.careers-cta { display: flex; justify-content: center; padding-top: 4px; }
+
 /* ── REVEAL ── */
 .r { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
 .r.on { opacity: 1; transform: none; }
@@ -245,6 +266,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 48px; display: flex; a
     <a href="#how">How it works</a>
     <a href="#proof">Results</a>
     <a href="#pricing">Pricing</a>
+    <a href="#careers">Careers</a>
     <a href="mailto:jack@vetinc.ca" class="nav-cta">Book free analysis</a>
   </div>
 </nav>
@@ -406,6 +428,39 @@ footer { border-top: 1px solid var(--line); padding: 28px 48px; display: flex; a
       <a href="mailto:jack@vetinc.ca?subject=Free%20fee%20schedule%20analysis" class="btn btn-p">Book a free analysis</a>
     </div>
     <p class="cta-fine">No credit card &nbsp;·&nbsp; AVImark &amp; Cornerstone &nbsp;·&nbsp; jack@vetinc.ca &nbsp;·&nbsp; 780-904-3599</p>
+  </div>
+</div>
+
+<!-- CAREERS -->
+<div class="careers-wrap r" id="careers">
+  <div class="careers-sec">
+    <span class="sec-label">We're hiring</span>
+    <h2 class="sec-h">Appointment Setter — <span>Vet SaaS</span></h2>
+    <p class="careers-meta">Commission-only &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Flexible hours</p>
+    <p class="sec-p careers-desc">Looking for a self-motivated closer to book discovery calls for a veterinary software company (vetinc.ca). You'll be cold calling vet clinics across Canada to set up short meetings with clinic owners or practice managers.</p>
+    <div class="careers-card">
+      <div class="careers-grid">
+        <div>
+          <span class="careers-sub">Pay structure</span>
+          <ul class="careers-items">
+            <li>$33 per qualified meeting booked</li>
+            <li>Bumps to $40 after 10 meetings, $50 after 25</li>
+            <li>Bonus paid on every clinic that converts to a paying customer</li>
+          </ul>
+        </div>
+        <div>
+          <span class="careers-sub">What we're looking for</span>
+          <ul class="careers-items">
+            <li>Comfortable on the phone with business owners</li>
+            <li>Self-directed — you set your own hours</li>
+            <li>Previous cold calling or SDR experience is a plus, not a requirement</li>
+          </ul>
+        </div>
+      </div>
+      <div class="careers-cta">
+        <a href="mailto:jack@vetinc.ca?subject=Appointment%20Setter%20Application" class="btn btn-p">Apply via email</a>
+      </div>
+    </div>
   </div>
 </div>
 
