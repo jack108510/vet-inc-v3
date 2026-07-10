@@ -73,6 +73,9 @@ nav {
   position: relative;
 }
 @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding: 100px 24px 64px; gap: 48px; } }
+.hero-screenshot { position: relative; }
+.hero-screenshot img { width: 100%; height: auto; border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06); display: block; }
+@media (max-width: 900px) { .hero-screenshot img { max-width: 500px; margin: 0 auto; } }
 
 .hero-tag { font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; }
 .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 12px var(--blue); }
@@ -264,21 +267,8 @@ footer { border-top: 1px solid var(--line); padding: 28px 48px; display: flex; a
       </div>
     </div>
     <div class="r">
-      <div class="card">
-        <div class="card-head">
-          <span class="ch-title">Scheduled Review — June 2026</span>
-          <span class="ch-tag">14 flagged</span>
-        </div>
-        <div class="card-row"><span class="cr-name">Annual Wellness Exam</span><span class="cr-old">$68</span><span class="cr-new">$79</span></div>
-        <div class="card-row"><span class="cr-name">Dental Cleaning — Cat</span><span class="cr-old">$210</span><span class="cr-new">$235</span></div>
-        <div class="card-row"><span class="cr-name">CBC Panel</span><span class="cr-old">$55</span><span class="cr-new flat">$55 — OK</span></div>
-        <div class="card-row"><span class="cr-name">Spay — Small Dog</span><span class="cr-old">$290</span><span class="cr-new">$320</span></div>
-        <div class="card-row"><span class="cr-name">X-Ray (2 views)</span><span class="cr-old">$85</span><span class="cr-new">$98</span></div>
-        <div class="card-foot">
-          <div class="cf"><div class="cf-n">14</div><div class="cf-l">Flagged</div></div>
-          <div class="cf"><div class="cf-n b">+$680</div><div class="cf-l">Est. monthly</div></div>
-          <div class="cf"><div class="cf-n">1,386</div><div class="cf-l">Monitored</div></div>
-        </div>
+      <div class="hero-screenshot">
+        <img src="assets/hero-dashboard.jpg" alt="Vet INC dashboard on laptop and phone"/>
       </div>
     </div>
   </div>
